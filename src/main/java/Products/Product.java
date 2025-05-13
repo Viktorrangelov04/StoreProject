@@ -36,11 +36,11 @@ public class Product {
         return expiryDate;
     }
 
-    public BigDecimal getSellingPrice(){
-        BigDecimal markup= BigDecimal.valueOf(category.getMarkup());
-        BigDecimal multiplier = BigDecimal.ONE.add(markup);
-        return deliveryPrice.multiply(multiplier);
-    }
+//    public BigDecimal getSellingPrice(){
+//        BigDecimal markup= BigDecimal.valueOf(category.getMarkup());
+//        BigDecimal multiplier = BigDecimal.ONE.add(markup);
+//        return deliveryPrice.multiply(multiplier);
+//    }
 
     void setName(String newName){
         this.name = newName;
