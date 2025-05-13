@@ -1,4 +1,4 @@
-package org.example;
+package Products;
 
 public enum Category {
     Food(0.3),

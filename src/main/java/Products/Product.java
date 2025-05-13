@@ -1,21 +1,22 @@
-package org.example;
+package Products;
 
 import java.math.BigDecimal;
 import java.util.UUID;
-//import java.time.LocalDate;
+import java.time.LocalDate;
 
-public abstract class Product {
+public class Product {
     private final String id;
-    private final String name;
-    private final BigDecimal deliveryPrice;
+    private String name;
+    private BigDecimal deliveryPrice;
     private final Category category;
-//    private final LocalDate expiryDate;
+    private final LocalDate expiryDate;
 
-    public Product(String name, BigDecimal deliveryPrice, Category category) {
+    public Product(String name, BigDecimal deliveryPrice, Category category, LocalDate expiryDate) {
         this.id =  UUID.randomUUID().toString();
         this.name = name;
         this.deliveryPrice = deliveryPrice;
         this.category = category;
+        this.expiryDate = expiryDate;
     }
 
     public String getId(){
@@ -31,10 +32,20 @@ public abstract class Product {
     public Category getCategory(){
         return category;
     }
+    public LocalDate getExpiryDate(){
+        return expiryDate;
+    }
 
     public BigDecimal getSellingPrice(){
         BigDecimal markup= BigDecimal.valueOf(category.getMarkup());
         BigDecimal multiplier = BigDecimal.ONE.add(markup);
         return deliveryPrice.multiply(multiplier);
+    }
+
+    void setName(String newName){
+        this.name = newName;
+    }
+    void setDeliveryPrice(BigDecimal newDeliveryPrice){
+        this.deliveryPrice = newDeliveryPrice;
     }
 }
