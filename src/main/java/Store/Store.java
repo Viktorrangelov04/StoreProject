@@ -1,4 +1,4 @@
-package org.example;
+package Store;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -38,19 +38,19 @@ public class Store {
         return daysBeforeExpirationThreshold;
     }
 
-    void setStoreName(String storeName){
+    public void setStoreName(String storeName){
         this.storeName = storeName;
     }
-    void setFoodMarkupPercent(BigDecimal newFoodMarkupPercent){
+    public void setFoodMarkupPercent(BigDecimal newFoodMarkupPercent){
         this.foodMarkupPercent = newFoodMarkupPercent;
     }
-    void setNonFoodMarkupPercent(BigDecimal newNonFoodMarkupPercent){
+    public void setNonFoodMarkupPercent(BigDecimal newNonFoodMarkupPercent){
         this.nonFoodMarkupPercent = newNonFoodMarkupPercent;
     }
-    void setExpiryDiscountPercent(BigDecimal newExpiryDiscountPercent){
+    public void setExpiryDiscountPercent(BigDecimal newExpiryDiscountPercent){
         this.expiryDiscountPercent = newExpiryDiscountPercent;
     }
-    void setDaysBeforeExpirationThreshold(int daysBeforeExpirationThreshold){
+    public void setDaysBeforeExpirationThreshold(int daysBeforeExpirationThreshold){
         this.daysBeforeExpirationThreshold = daysBeforeExpirationThreshold;
     }
 
