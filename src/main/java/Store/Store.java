@@ -1,11 +1,11 @@
 package Store;
 
 import Products.Category;
+import Products.Product;
+import Products.StockItem;
 
 import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class Store {
     private final String id;
@@ -13,14 +13,15 @@ public class Store {
     private BigDecimal expiryDiscountPercent;
     private int daysBeforeExpirationThreshold;
     private final Map<Category, BigDecimal> markupPercentages = new HashMap<>();
+    private final Map<Product, List<StockItem>> inventory = new HashMap<>();
 
-    public Store(String storeName, BigDecimal expiryDiscountPercent, int daysBeforeExpirationThreshold, BigDecimal foodMarkupPercent, BigDecimal nonFoodMarkupPercent){
+    public Store(String storeName, BigDecimal foodMarkupPercent, BigDecimal nonFoodMarkupPercent, BigDecimal expiryDiscountPercent, int daysBeforeExpirationThreshold){
         this.id = UUID.randomUUID().toString();
         this.storeName = storeName;
-        this.expiryDiscountPercent = expiryDiscountPercent;
-        this.daysBeforeExpirationThreshold = daysBeforeExpirationThreshold;
         markupPercentages.put(Category.NonFood, nonFoodMarkupPercent);
         markupPercentages.put(Category.Food, foodMarkupPercent);
+        this.expiryDiscountPercent = expiryDiscountPercent;
+        this.daysBeforeExpirationThreshold = daysBeforeExpirationThreshold;
     }
 
     public String getId(){
@@ -39,19 +40,26 @@ public class Store {
         return markupPercentages.getOrDefault(category, BigDecimal.ZERO);
     }
 
-    public void setStoreName(String storeName){
-        this.storeName = storeName;
+    public void setStoreName(String NewStoreName){
+        storeName = NewStoreName;
     }
-    public void setExpiryDiscountPercent(BigDecimal newExpiryDiscountPercent){
-        if(newExpiryDiscountPercent.compareTo(BigDecimal.ZERO)<0 || newExpiryDiscountPercent.compareTo(BigDecimal.valueOf(100))>0){
+    public void setExpiryDiscountPercent(BigDecimal newPercent){
+        if(newPercent.compareTo(BigDecimal.ZERO)<0 || newPercent.compareTo(BigDecimal.valueOf(100))>0){
             throw new IllegalArgumentException("Percent has to be between 0 and 100%");
         }
-        this.expiryDiscountPercent = newExpiryDiscountPercent;
+        expiryDiscountPercent = newPercent;
     }
-    public void setDaysBeforeExpirationThreshold(int daysBeforeExpirationThreshold){
-        this.daysBeforeExpirationThreshold = daysBeforeExpirationThreshold;
+    public void setDaysBeforeExpirationThreshold(int newThreshold){
+        daysBeforeExpirationThreshold = newThreshold;
     }
-    public void setMarkup(Category category, BigDecimal percent){
-        markupPercentages.put(category, percent);
+    public void setMarkup(Category category, BigDecimal newPercent){
+        if(newPercent.compareTo(BigDecimal.ZERO)<0 || newPercent.compareTo(BigDecimal.valueOf(100))>0){
+            throw new IllegalArgumentException("Percent has to be between 0 and 100%");
+        }
+        markupPercentages.put(category, newPercent);
+    }
+
+    public void addStock(Product product, StockItem newItem){
+        inventory.computeIfAbsent(product, k-> new ArrayList<>()).add(newItem);
     }
 }

@@ -7,7 +7,7 @@ public class Cashier {
     private BigDecimal salary;
 
     public Cashier(String name, BigDecimal salary){
-        this.id = UUID.randomUUID().toString();
+        id = UUID.randomUUID().toString();
         this.name = name;
         this.salary = salary;
     }
@@ -22,6 +22,6 @@ public class Cashier {
         return salary;
     }
     public void setSalary(BigDecimal newSalary){
-        this.salary = newSalary;
+        salary = newSalary;
     }
 }
