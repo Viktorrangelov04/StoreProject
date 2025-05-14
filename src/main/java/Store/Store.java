@@ -5,6 +5,8 @@ import Products.Product;
 import Products.StockItem;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.LocalDate;
 import java.util.*;
 
 public class Store {
@@ -59,7 +61,27 @@ public class Store {
         markupPercentages.put(category, newPercent);
     }
 
-    public void addStock(Product product, StockItem newItem){
-        inventory.computeIfAbsent(product, k-> new ArrayList<>()).add(newItem);
+    public void addStock(Product product, StockItem newItem) {
+        BigDecimal markup = this.getMarkup(product.getCategory());
+        BigDecimal markupRate = markup.divide(new BigDecimal("100"));
+        BigDecimal sellingPrice = newItem.getDeliveryPrice()
+                .multiply(BigDecimal.ONE.add(markupRate))
+                .setScale(2, RoundingMode.HALF_UP);
+        newItem.setSellingPrice(sellingPrice);
+
+        inventory.computeIfAbsent(product, k -> new ArrayList<>()).add(newItem);
+    }
+
+    public void addStock(Product product, int quantity, BigDecimal deliveryPrice, LocalDate expiryDate) {
+        BigDecimal markup = this.getMarkup(product.getCategory());
+        BigDecimal markupRate = markup.divide(new BigDecimal("100"));
+        BigDecimal sellingPrice = deliveryPrice
+                .multiply(BigDecimal.ONE.add(markupRate))
+                .setScale(2, RoundingMode.HALF_UP);
+
+        StockItem newItem = new StockItem(deliveryPrice, quantity, expiryDate);
+        newItem.setSellingPrice(sellingPrice);
+
+        inventory.computeIfAbsent(product, k -> new ArrayList<>()).add(newItem);
     }
 }

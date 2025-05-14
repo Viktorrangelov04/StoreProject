@@ -9,9 +9,8 @@ public class StockItem {
     private int quantity;
     private LocalDate expiryDate;
 
-    public StockItem(BigDecimal deliveryPrice, BigDecimal sellingPrice, int quantity, LocalDate expiryDate) {
+    public StockItem(BigDecimal deliveryPrice, int quantity, LocalDate expiryDate) {
         this.deliveryPrice = deliveryPrice;
-        this.sellingPrice = sellingPrice;
         this.quantity = quantity;
         this.expiryDate = expiryDate;
     }
