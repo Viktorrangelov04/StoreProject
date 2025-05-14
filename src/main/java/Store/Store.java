@@ -1,6 +1,7 @@
 package Store;
 
 import Products.Category;
+import Products.InsufficientStockException;
 import Products.Product;
 import Products.StockItem;
 
@@ -72,16 +73,24 @@ public class Store {
         inventory.computeIfAbsent(product, k -> new ArrayList<>()).add(newItem);
     }
 
-    public void addStock(Product product, int quantity, BigDecimal deliveryPrice, LocalDate expiryDate) {
+    public void addStock(Cashier cashier, Product product, int quantity, BigDecimal deliveryPrice, LocalDate expiryDate) {
         BigDecimal markup = this.getMarkup(product.getCategory());
         BigDecimal markupRate = markup.divide(new BigDecimal("100"));
         BigDecimal sellingPrice = deliveryPrice
                 .multiply(BigDecimal.ONE.add(markupRate))
                 .setScale(2, RoundingMode.HALF_UP);
 
-        StockItem newItem = new StockItem(deliveryPrice, quantity, expiryDate);
+        StockItem newItem = new StockItem(product, deliveryPrice, quantity, expiryDate);
         newItem.setSellingPrice(sellingPrice);
 
         inventory.computeIfAbsent(product, k -> new ArrayList<>()).add(newItem);
+    }
+
+    public void buyProduct(StockItem item, int quantity) throws InsufficientStockException {
+        int stockQuantity = item.getQuantity();
+        if(stockQuantity<quantity){
+            throw new InsufficientStockException(item, quantity, stockQuantity);
+        }
+
     }
 }

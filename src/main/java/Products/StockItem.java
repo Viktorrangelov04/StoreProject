@@ -4,17 +4,22 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class StockItem {
+    private Product product;
     private BigDecimal deliveryPrice;
     private BigDecimal sellingPrice;
     private int quantity;
     private LocalDate expiryDate;
 
-    public StockItem(BigDecimal deliveryPrice, int quantity, LocalDate expiryDate) {
+    public StockItem(Product product, BigDecimal deliveryPrice, int quantity, LocalDate expiryDate) {
+        this.product = product;
         this.deliveryPrice = deliveryPrice;
         this.quantity = quantity;
         this.expiryDate = expiryDate;
     }
 
+    public Product getProduct(){
+        return product;
+    }
     public BigDecimal getDeliveryPrice(){
         return deliveryPrice;
     }
