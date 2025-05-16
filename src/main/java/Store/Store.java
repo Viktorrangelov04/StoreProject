@@ -5,11 +5,10 @@ import Products.InsufficientStockException;
 import Products.Product;
 import Products.StockItem;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.sql.SQLOutput;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.*;
 
 public class Store {
@@ -19,7 +18,7 @@ public class Store {
     private int daysBeforeExpirationThreshold;
     private final Map<Category, BigDecimal> markupPercentages = new HashMap<>();
     private final Map<Product, List<StockItem>> inventory = new HashMap<>();
-    private Map<StockItem, Integer> cart = new HashMap<>();
+    private final Map<StockItem, Integer> cart = new HashMap<>();
     private BigDecimal storeRevenue;
     private BigDecimal storeProfit;
 
@@ -119,7 +118,7 @@ public class Store {
         cart.put(item, current+quantity);
 
     }
-    public void buyProducts(Scanner scanner, BigDecimal clientMoney, Cashier cashier) throws InsufficientStockException {
+    public void buyProducts(Scanner scanner, BigDecimal clientMoney, Cashier cashier) throws InsufficientStockException, IOException {
         cart.clear();
         int cartQuantity=0;
         BigDecimal totalCost = BigDecimal.ZERO;
@@ -149,6 +148,10 @@ public class Store {
         for (Map.Entry<StockItem, Integer> entry : cart.entrySet()) {
             StockItem item = entry.getKey();
             int quantity = entry.getValue();
+
+            if (item.getQuantity() < quantity) {
+                throw new InsufficientStockException(item, quantity, item.getQuantity());
+            }
 
             if(item.isExpired()){
                 System.out.println("Product \"" + item.getProduct().getName() + "\" is expired");
@@ -183,6 +186,8 @@ public class Store {
             cartQuantity++;
         }
 
-        Receipt Receipt= new Receipt(cashier, cart, cartQuantity);
+        int serialNumber = ReceiptManager.getNextReceiptNumber();
+        Receipt receipt = new Receipt(serialNumber, cashier, cart, cartQuantity, totalCost);
+        ReceiptManager.saveReceipt(receipt);
     }
 }

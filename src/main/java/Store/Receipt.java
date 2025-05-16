@@ -1,55 +1,63 @@
 package Store;
-import Products.Product;
+
 import Products.StockItem;
 
-import java.io.IOException;
+import java.io.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
 import java.util.Map;
 
-public class Receipt {
+public class Receipt implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private static int receiptCounter = 0;
+
     private final int serialNumber;
     private final Cashier cashier;
     private final LocalDateTime now;
     private final int itemQuantity;
     private final BigDecimal totalPrice;
-    private  final Map<StockItem, Integer> products;
+    private final Map<StockItem, Integer> products;
 
-    public Receipt(Cashier cashier, Map<StockItem, Integer> products, int itemQuantity){
-        this.serialNumber = ++receiptCounter;
+    public Receipt(int serialNumber, Cashier cashier, Map<StockItem, Integer> products, int itemQuantity, BigDecimal totalPrice) {
+        this.serialNumber = serialNumber;
         this.cashier = cashier;
         this.now = LocalDateTime.now();
         this.itemQuantity = itemQuantity;
-        this.totalPrice = BigDecimal.ZERO;
+        this.totalPrice = totalPrice;
         this.products = products;
     }
 
-    public int getSerialNumber(){
+    public int getSerialNumber() {
         return serialNumber;
     }
-    public Cashier getCashier(){
+
+    public Cashier getCashier() {
         return cashier;
     }
-    public LocalDateTime getNow(){
+
+    public LocalDateTime getNow() {
         return now;
     }
-    public int getItemQuantity(){
+
+    public int getItemQuantity() {
         return itemQuantity;
     }
-    public BigDecimal getTotalPrice(){
+
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
-    public Map<StockItem, Integer> getProducts(){
+
+    public Map<StockItem, Integer> getProducts() {
         return products;
     }
 
-    public String FormatReceipt() {
+    public String formatReceipt() {
         StringBuilder sb = new StringBuilder();
         sb.append("Касова бележка № ").append(serialNumber).append("\n");
         sb.append("Касиер: ").append(cashier.getName()).append("\n");
@@ -59,7 +67,8 @@ public class Receipt {
         for (Map.Entry<StockItem, Integer> entry : products.entrySet()) {
             sb.append("- ").append(entry.getKey().getProduct().getName())
                     .append(" x").append(entry.getValue())
-                    .append("\n");
+                    .append(" @ ").append(entry.getKey().getSellingPrice())
+                    .append(" лв\n");
         }
 
         sb.append("Обща сума: ").append(totalPrice.setScale(2, RoundingMode.HALF_UP)).append(" лв.\n");
@@ -67,13 +76,32 @@ public class Receipt {
         return sb.toString();
     }
 
-    public void saveToFile() throws IOException {
+    public void saveToTextFile() throws IOException {
         String folder = "receipts";
         String filename = "receipt_" + serialNumber + ".txt";
 
         Path path = Path.of(folder, filename);
         Files.createDirectories(path.getParent());
-        Files.write(path, FormatReceipt().getBytes());
+        Files.write(path, formatReceipt().getBytes());
     }
 
+    public void serialize() throws IOException {
+        String folder = "receipts";
+        String filename = "receipt_" + serialNumber + ".ser";
+
+        Path path = Path.of(folder, filename);
+        Files.createDirectories(path.getParent());
+
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path.toFile()))) {
+            oos.writeObject(this);
+        }
+    }
+
+    public static Receipt deserialize(int serialNumber) throws IOException, ClassNotFoundException {
+        String path = "receipts/receipt_" + serialNumber + ".ser";
+
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
+            return (Receipt) ois.readObject();
+        }
+    }
 }
