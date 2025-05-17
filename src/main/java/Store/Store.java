@@ -21,6 +21,9 @@ public class Store {
     private final Map<StockItem, Integer> cart = new HashMap<>();
     private BigDecimal storeRevenue;
     private BigDecimal storeProfit;
+    private BigDecimal totalDeliveryCost = BigDecimal.ZERO;
+    private final List<Cashier> cashiers = new ArrayList<>();
+    private final List<CashRegister> cashRegistries = new ArrayList<>();
 
     public Store(String storeName, BigDecimal foodMarkupPercent, BigDecimal nonFoodMarkupPercent, BigDecimal expiryDiscountPercent, int daysBeforeExpirationThreshold){
         this.id = UUID.randomUUID().toString();
@@ -48,6 +51,27 @@ public class Store {
     public BigDecimal getMarkup(Category category){
         return markupPercentages.getOrDefault(category, BigDecimal.ZERO);
     }
+    public BigDecimal getTotalSalaries() {
+        return cashiers.stream()
+                .map(Cashier::getSalary)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public BigDecimal getTotalDeliveryCost() {
+        return totalDeliveryCost;
+    }
+
+    public BigDecimal getTotalExpenses() {
+        return totalDeliveryCost.add(getTotalSalaries());
+    }
+
+    public BigDecimal getProfit() {
+        return storeRevenue.subtract(getTotalExpenses());
+    }
+
+    public List<Cashier> getCashiers() {
+        return cashiers;
+    }
 
     public void setStoreName(String NewStoreName){
         storeName = NewStoreName;
@@ -66,6 +90,37 @@ public class Store {
             throw new IllegalArgumentException("Percent has to be between 0 and 100%");
         }
         markupPercentages.put(category, newPercent);
+    }
+
+    public Cashier addCashier(String name, BigDecimal salary) {
+        Cashier cashier = new Cashier(name, salary);
+        cashiers.add(cashier);
+        return cashier;
+    }
+
+    public CashRegister addCashRegistry() {
+        CashRegister registry = new CashRegister();
+        cashRegistries.add(registry);
+        return registry;
+    }
+
+    public boolean assignToFirstAvailableRegister(Cashier cashier) {
+        for (CashRegister registry : cashRegistries) {
+            if (registry.isAvailable()) {
+                registry.assign(cashier);
+                System.out.println("Cashier " + cashier.getName() + " assigned to a register.");
+                return true;
+            }
+        }
+        System.out.println("No available registers for cashier " + cashier.getName());
+        return false;
+    }
+
+    public void unassignWorkerFromCashRegistry(int index) {
+        if (index < 0 || index >= cashRegistries.size()) {
+            throw new IndexOutOfBoundsException("Invalid registry index");
+        }
+        cashRegistries.get(index).unassign();
     }
 
     public void addStock(Product product, StockItem newItem) {
@@ -89,6 +144,8 @@ public class Store {
         StockItem newItem = new StockItem(product, deliveryPrice, quantity, expiryDate);
         newItem.setSellingPrice(sellingPrice);
 
+        BigDecimal deliveryTotal = deliveryPrice.multiply(BigDecimal.valueOf(quantity));
+        totalDeliveryCost = totalDeliveryCost.add(deliveryTotal);
         inventory.computeIfAbsent(product, k -> new ArrayList<>()).add(newItem);
     }
 
