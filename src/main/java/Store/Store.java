@@ -48,6 +48,9 @@ public class Store {
     public int getDaysBeforeExpirationThreshold(){
         return daysBeforeExpirationThreshold;
     }
+    public BigDecimal getExpiryDiscountPercent(){
+        return expiryDiscountPercent;
+    }
     public BigDecimal getMarkup(Category category){
         return markupPercentages.getOrDefault(category, BigDecimal.ZERO);
     }
@@ -123,7 +126,9 @@ public class Store {
         cashRegistries.get(index).unassign();
     }
 
-    public void addStock(Product product, StockItem newItem) {
+    public void addStock(StockItem newItem) {
+        Product product = newItem.getProduct();
+
         BigDecimal markup = this.getMarkup(product.getCategory());
         BigDecimal markupRate = markup.divide(new BigDecimal("100"));
         BigDecimal sellingPrice = newItem.getDeliveryPrice()

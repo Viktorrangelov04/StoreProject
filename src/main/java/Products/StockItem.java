@@ -6,11 +6,11 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class StockItem {
-    private Product product;
+    private final Product product;
     private BigDecimal deliveryPrice;
     private BigDecimal sellingPrice;
     private int quantity;
-    private LocalDate expiryDate;
+    private final LocalDate expiryDate;
 
     public StockItem(Product product, BigDecimal deliveryPrice, int quantity, LocalDate expiryDate) {
         this.product = product;
@@ -41,6 +41,19 @@ public class StockItem {
     public void setSellingPrice(BigDecimal newSellingPrice){
         sellingPrice = newSellingPrice;
     }
+
+    public void addQuantity(int amount) {
+        if (amount < 0) throw new IllegalArgumentException("Cannot add negative quantity");
+        this.quantity += amount;
+    }
+
+    public void removeQuantity(int amount) {
+        if (amount > quantity) {
+            throw new IllegalArgumentException("Not enough stock to remove " + amount + "you only have " + quantity);
+        }
+        this.quantity -= amount;
+    }
+
     public void applyCloseToExpiryDiscount(BigDecimal discountPercentage){
         BigDecimal discountRate = discountPercentage.divide(new BigDecimal("100"));
         BigDecimal multiplier = BigDecimal.ONE.subtract(discountRate);
@@ -50,9 +63,6 @@ public class StockItem {
 
     public void setQuantity(int newQuantity){
         quantity = newQuantity;
-    }
-    public void setExpiryDate(LocalDate newExpiryDate){
-        expiryDate = newExpiryDate;
     }
 
     public boolean isExpired() {

@@ -16,4 +16,18 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    testLogging {
+        events "passed", "failed", "skipped"
+    }
 }
+
+sourceSets {
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+        compileClasspath += sourceSets.main.output
+        runtimeClasspath += sourceSets.main.output
+    }
+}
+
