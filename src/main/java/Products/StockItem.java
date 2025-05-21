@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
 public class StockItem {
     private final Product product;
@@ -76,5 +77,21 @@ public class StockItem {
 
     public boolean isCloseToExpiry(int thresholdDays){
         return ChronoUnit.DAYS.between(LocalDate.now(), expiryDate)<=thresholdDays;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof StockItem)) return false;
+        StockItem that = (StockItem) o;
+        return quantity == that.quantity &&
+                product.equals(that.product) &&
+                deliveryPrice.equals(that.deliveryPrice) &&
+                expiryDate.equals(that.expiryDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(product, deliveryPrice, quantity, expiryDate);
     }
 }

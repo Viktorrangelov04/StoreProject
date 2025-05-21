@@ -15,19 +15,27 @@ public class Receipt implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private static int receiptCounter = 0;
-
     private final int serialNumber;
     private final Cashier cashier;
-    private final LocalDateTime now;
+    private final LocalDateTime timestamp;
     private final int itemQuantity;
     private final BigDecimal totalPrice;
     private final Map<StockItem, Integer> products;
 
+
     public Receipt(int serialNumber, Cashier cashier, Map<StockItem, Integer> products, int itemQuantity, BigDecimal totalPrice) {
         this.serialNumber = serialNumber;
         this.cashier = cashier;
-        this.now = LocalDateTime.now();
+        this.timestamp = LocalDateTime.now();
+        this.itemQuantity = itemQuantity;
+        this.totalPrice = totalPrice;
+        this.products = products;
+    }
+
+    public Receipt(int serialNumber, Cashier cashier, Map<StockItem, Integer> products, int itemQuantity, BigDecimal totalPrice, LocalDateTime timestamp) {
+        this.serialNumber = serialNumber;
+        this.cashier = cashier;
+        this.timestamp = timestamp;
         this.itemQuantity = itemQuantity;
         this.totalPrice = totalPrice;
         this.products = products;
@@ -41,8 +49,8 @@ public class Receipt implements Serializable {
         return cashier;
     }
 
-    public LocalDateTime getNow() {
-        return now;
+    public LocalDateTime getTimestamp() {
+        return timestamp;
     }
 
     public int getItemQuantity() {
@@ -61,7 +69,7 @@ public class Receipt implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append("Касова бележка № ").append(serialNumber).append("\n");
         sb.append("Касиер: ").append(cashier.getName()).append("\n");
-        sb.append("Дата и час: ").append(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))).append("\n");
+        sb.append("Дата и час: ").append(timestamp.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))).append("\n");
         sb.append("Продукти:\n");
 
         for (Map.Entry<StockItem, Integer> entry : products.entrySet()) {

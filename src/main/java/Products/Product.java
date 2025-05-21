@@ -1,6 +1,7 @@
 package Products;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 import java.util.UUID;
 
 
@@ -32,4 +33,16 @@ public class Product {
         name = newName;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+        Product that = (Product) o;
+        return name.equals(that.name) && category == that.category;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, category);
+    }
 }

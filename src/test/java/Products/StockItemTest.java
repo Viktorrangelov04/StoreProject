@@ -25,7 +25,7 @@ public class StockItemTest {
         Product product = new Product("Apple", Category.Food);
         StockItem item = new StockItem(product, new BigDecimal("20"), 10, LocalDate.now().plusDays(10));
         //Assert
-        assertEquals(product, item.getProduct());
+        assertEquals(new Product("Apple", Category.Food), item.getProduct());
     }
 
     @Test
@@ -207,5 +207,57 @@ public class StockItemTest {
         StockItem item = makeDefaultItem();
         //Assert
         assertFalse(item.isCloseToExpiry(7));
+    }
+
+    private StockItem createItem(String name, int quantity) {
+        Product p = new Product(name, Category.Food);
+        return new StockItem(p, new BigDecimal("10.00"), quantity, LocalDate.now().plusDays(5));
+    }
+
+    @Test
+    void equals_ShouldReturnTrue_ForSameObject() {
+        StockItem item = createItem("Banana", 5);
+        assertEquals(item, item);
+    }
+
+    @Test
+    void equals_ShouldReturnTrue_ForSameValues() {
+        StockItem a = createItem("Banana", 5);
+        StockItem b = createItem("Banana", 5);
+        assertEquals(a, b);
+    }
+
+    @Test
+    void equals_ShouldReturnFalse_ForDifferentQuantity() {
+        StockItem a = createItem("Banana", 5);
+        StockItem b = createItem("Banana", 6);
+        assertNotEquals(a, b);
+    }
+
+    @Test
+    void equals_ShouldReturnFalse_ForNull() {
+        StockItem a = createItem("Banana", 5);
+        assertNotEquals(null, a);
+    }
+
+    @Test
+    void equals_ShouldReturnFalse_ForDifferentType() {
+        StockItem a = createItem("Banana", 5);
+        assertNotEquals("not a stock item", a);
+    }
+
+    @Test
+    void hashCode_ShouldBeEqual_ForEqualObjects() {
+        StockItem a = createItem("Banana", 5);
+        StockItem b = createItem("Banana", 5);
+        assertEquals(a.hashCode(), b.hashCode());
+    }
+
+    @Test
+    void hashCode_ShouldBeConsistent() {
+        StockItem a = createItem("Banana", 5);
+        int hash1 = a.hashCode();
+        int hash2 = a.hashCode();
+        assertEquals(hash1, hash2);
     }
 }
