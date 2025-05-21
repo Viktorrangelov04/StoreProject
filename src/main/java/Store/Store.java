@@ -24,6 +24,7 @@ public class Store {
     private BigDecimal totalDeliveryCost = BigDecimal.ZERO;
     private final List<Cashier> cashiers = new ArrayList<>();
     private final List<CashRegister> cashRegistries = new ArrayList<>();
+    ReceiptStorage storage = new FileReceiptStorage();
 
     public Store(String storeName, BigDecimal foodMarkupPercent, BigDecimal nonFoodMarkupPercent, BigDecimal expiryDiscountPercent, int daysBeforeExpirationThreshold){
         this.id = UUID.randomUUID().toString();
@@ -180,33 +181,62 @@ public class Store {
         cart.put(item, current+quantity);
 
     }
+
     public void buyProducts(Scanner scanner, BigDecimal clientMoney, Cashier cashier) throws InsufficientStockException, IOException {
         cart.clear();
-        int cartQuantity=0;
+        int cartQuantity = 0;
         BigDecimal totalCost = BigDecimal.ZERO;
-        while(true){
+
+        while (true) {
             System.out.print("Insert product name(or 'done' to finalize purchase): ");
             String input = scanner.nextLine().trim();
 
-            if(input.equals("done")){
+            if (input.equalsIgnoreCase("done")) {
                 break;
             }
 
             Product product = findProductByName(input);
-            if(product == null){
+            if (product == null) {
                 System.out.println("Product isn't found");
                 continue;
             }
-            System.out.print("Quantity");
-            int quantity = Integer.parseInt(scanner.nextLine());
-            StockItem item = getFirstAvailableStockItem(product);
-            if(item==null){
+
+            System.out.print("Quantity: ");
+            int quantity;
+            try {
+                quantity = Integer.parseInt(scanner.nextLine());
+                if (quantity <= 0) {
+                    System.out.println("Please enter a positive number.");
+                    continue;
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid quantity. Please enter a valid number.");
+                continue;
+            }
+
+            List<StockItem> stockItems = inventory.get(product);
+            if (stockItems == null || stockItems.isEmpty()) {
                 System.out.println("Product is out of stock");
                 continue;
             }
 
-            addToCart(item, quantity);
+            // Сумираме всички налични и валидни StockItem-и за този продукт
+            int totalAvailable = stockItems.stream()
+                    .filter(item -> item.getQuantity() > 0 && !item.isExpired())
+                    .mapToInt(StockItem::getQuantity)
+                    .sum();
+
+            if (totalAvailable < quantity) {
+                throw new InsufficientStockException(stockItems.get(0), quantity, totalAvailable);
+            }
+
+            // Засега добавяме само първия валиден stock item, както беше в оригинала
+            StockItem item = getFirstAvailableStockItem(product);
+            if (item != null) {
+                addToCart(item, quantity);
+            }
         }
+
         for (Map.Entry<StockItem, Integer> entry : cart.entrySet()) {
             StockItem item = entry.getKey();
             int quantity = entry.getValue();
@@ -215,13 +245,15 @@ public class Store {
                 throw new InsufficientStockException(item, quantity, item.getQuantity());
             }
 
-            if(item.isExpired()){
+            if (item.isExpired()) {
                 System.out.println("Product \"" + item.getProduct().getName() + "\" is expired");
                 continue;
             }
-            if(item.isCloseToExpiry(daysBeforeExpirationThreshold)){
-                item.applyCloseToExpiryDiscount(expiryDiscountPercent);
+
+            if (item.isCloseToExpiry(daysBeforeExpirationThreshold)) {
+                item.applyCloseToExpiryDiscount(expiryDiscountPercent, daysBeforeExpirationThreshold);
             }
+
             totalCost = totalCost.add(item.getSellingPrice().multiply(BigDecimal.valueOf(quantity)));
         }
 
@@ -239,7 +271,7 @@ public class Store {
             StockItem item = entry.getKey();
             int quantity = entry.getValue();
 
-            int newQuantity= item.getQuantity()-entry.getValue();
+            int newQuantity = item.getQuantity() - quantity;
             item.setQuantity(newQuantity);
 
             BigDecimal profit = item.getSellingPrice().multiply(BigDecimal.valueOf(quantity))
@@ -248,8 +280,8 @@ public class Store {
             cartQuantity++;
         }
 
-        int serialNumber = ReceiptManager.getNextReceiptNumber();
+        int serialNumber = storage.getNextReceiptNumber();
         Receipt receipt = new Receipt(serialNumber, cashier, cart, cartQuantity, totalCost);
-        ReceiptManager.saveReceipt(receipt);
+        storage.saveReceipt(receipt);
     }
 }

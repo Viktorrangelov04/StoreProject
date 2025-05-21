@@ -5,16 +5,16 @@ import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReceiptManager {
+public class FileReceiptStorage implements ReceiptStorage {
     private static final String COUNTER_FILE = "receipts/receipt_counter.txt";
     private static final String RECEIPT_FOLDER = "receipts";
-    private static int lastReceiptNumber = 0;
+    private int lastReceiptNumber = 0;
 
-    static {
+    public FileReceiptStorage() {
         loadCounter();
     }
 
-    private static void loadCounter() {
+    private void loadCounter() {
         try {
             Path path = Path.of(COUNTER_FILE);
             if (Files.exists(path)) {
@@ -26,7 +26,7 @@ public class ReceiptManager {
         }
     }
 
-    private static void saveCounter() {
+    private void saveCounter() {
         try {
             Files.createDirectories(Path.of(RECEIPT_FOLDER));
             Files.writeString(Path.of(COUNTER_FILE), String.valueOf(lastReceiptNumber));
@@ -35,13 +35,15 @@ public class ReceiptManager {
         }
     }
 
-    public static int getNextReceiptNumber() {
+    @Override
+    public int getNextReceiptNumber() {
         lastReceiptNumber++;
         saveCounter();
         return lastReceiptNumber;
     }
 
-    public static void saveReceipt(Receipt receipt) {
+    @Override
+    public void saveReceipt(Receipt receipt) {
         try {
             receipt.saveToTextFile();
             receipt.serialize();
@@ -50,7 +52,8 @@ public class ReceiptManager {
         }
     }
 
-    public static Receipt loadReceipt(int serialNumber) {
+    @Override
+    public Receipt loadReceipt(int serialNumber) {
         try {
             return Receipt.deserialize(serialNumber);
         } catch (IOException | ClassNotFoundException e) {
@@ -59,7 +62,8 @@ public class ReceiptManager {
         }
     }
 
-    public static List<Receipt> loadAllReceipts() {
+    @Override
+    public List<Receipt> loadAllReceipts() {
         List<Receipt> receipts = new ArrayList<>();
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(Path.of(RECEIPT_FOLDER), "receipt_*.ser")) {
             for (Path path : stream) {
@@ -79,7 +83,8 @@ public class ReceiptManager {
         return receipts;
     }
 
-    public static int getTotalReceiptsIssued() {
+    @Override
+    public int getTotalReceiptsIssued() {
         return lastReceiptNumber;
     }
 }

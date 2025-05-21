@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ca1a20-c2a8-400c-aad1-5e2be4be4c6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/Products/StockItemTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Store/ReceiptStorage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Products/InsufficientStockExceptionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Products/StockItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Products/StockItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Store/ReceiptManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Store/FileReceiptStorage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Store/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Store/Store.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Products/ProductTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Products/ProductTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Products/StockItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Products/StockItemTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +47,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="JUnit5 Test Class" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -88,6 +87,7 @@
     &quot;Gradle.ProjectStore [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.StockItemTest.isCloseToExpiry.executor&quot;: &quot;Profiler#1&quot;,
     &quot;JUnit.ProductTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StockItemTest.getProduct.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.Test.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -214,6 +214,22 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="StockItemTest.getProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProjectStore.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Products.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Products" />
+      <option name="MAIN_CLASS_NAME" value="Products.StockItemTest" />
+      <option name="METHOD_NAME" value="getProduct" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="JUnit" factoryName="JUnit">
       <module name="ProjectStore.test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -232,9 +248,11 @@
       <item itemvalue="Gradle.ProductTest.getName" />
       <item itemvalue="Gradle.StockItemTest.isCloseToExpiry" />
       <item itemvalue="JUnit.Test" />
+      <item itemvalue="JUnit.StockItemTest.getProduct" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StockItemTest.getProduct" />
         <item itemvalue="Gradle.ProductTest" />
         <item itemvalue="Gradle.StockItemTest.isCloseToExpiry" />
         <item itemvalue="Gradle.ProductTest.getId" />
@@ -273,7 +291,10 @@
       <workItem from="1747508466382" duration="419000" />
       <workItem from="1747508940591" duration="3392000" />
       <workItem from="1747512589462" duration="6301000" />
-      <workItem from="1747592024296" duration="1990000" />
+      <workItem from="1747592024296" duration="12831000" />
+      <workItem from="1747646117709" duration="2846000" />
+      <workItem from="1747770762024" duration="2359000" />
+      <workItem from="1747834442241" duration="1572000" />
     </task>
     <servers />
   </component>
