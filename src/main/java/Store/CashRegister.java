@@ -2,7 +2,7 @@ package Store;
 
 public class CashRegister {
     private boolean available = true;
-    private Cashier assignedCashier;
+    private Cashier assignedCashier=null;
 
     public boolean isAvailable(){
         return available;
@@ -11,9 +11,11 @@ public class CashRegister {
         if(!available){
             throw new IllegalStateException("This registry is already assigned.");
         }
+        assignedCashier = cashier;
         available = false;
     }
     public void unassign(){
+        assignedCashier = null;
         available = true;
     }
     public Cashier getAssignedCashier(){

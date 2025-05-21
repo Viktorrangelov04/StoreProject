@@ -68,6 +68,16 @@ public class StockItemTest {
     }
 
     @Test
+    void setQuantity_ShouldUpdateQuantityCorrectly() {
+        //Arrange
+        StockItem item = makeDefaultItem();
+        //Act
+        item.setQuantity(42);
+        //Assert
+        assertEquals(42, item.getQuantity());
+    }
+
+    @Test
     public void setDeliveryPrice() {
         //Arrange
         StockItem item = makeDefaultItem();
