@@ -75,7 +75,7 @@ public class Receipt implements Serializable {
         for (Map.Entry<StockItem, Integer> entry : products.entrySet()) {
             sb.append("- ").append(entry.getKey().getProduct().getName())
                     .append(" x").append(entry.getValue())
-                    .append(" @ ").append(entry.getKey().getSellingPrice())
+                    .append(" @ ").append(entry.getKey().getSellingPrice().setScale(2, RoundingMode.HALF_UP))
                     .append(" лв\n");
         }
 

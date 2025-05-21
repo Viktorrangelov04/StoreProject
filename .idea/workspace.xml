@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ca1a20-c2a8-400c-aad1-5e2be4be4c6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/Store/FileReceiptStorageTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Store/ReceiptTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Products/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Products/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Products/StockItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Products/StockItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Store/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Store/Receipt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Products/ProductTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Products/ProductTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Products/StockItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Products/StockItemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Store/ReceiptTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Store/ReceiptTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +88,7 @@
     "Gradle.StockItemTest.isCloseToExpiry.executor": "Profiler#1",
     "JUnit.CashRegisterTest.executor": "Coverage",
     "JUnit.ProductTest.executor": "Run",
+    "JUnit.ReceiptTest.formatReceipt.executor": "Run",
     "JUnit.ReceiptTest.getProducts.executor": "Run",
     "JUnit.StockItemTest.equals_ShouldReturnTrue_ForSameValues.executor": "Debug",
     "JUnit.StockItemTest.getProduct.executor": "Run",
@@ -128,39 +123,7 @@
       <recent name="Store" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Test">
-    <configuration name="ReceiptTest.getProducts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ProjectStore.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Store.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Store" />
-      <option name="MAIN_CLASS_NAME" value="Store.ReceiptTest" />
-      <option name="METHOD_NAME" value="getProducts" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StockItemTest.getProduct" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ProjectStore.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Products.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Products" />
-      <option name="MAIN_CLASS_NAME" value="Products.StockItemTest" />
-      <option name="METHOD_NAME" value="getProduct" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="Test" type="JUnit" factoryName="JUnit">
       <module name="ProjectStore.test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -173,17 +136,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="JUnit.Test" />
-      <item itemvalue="JUnit.StockItemTest.getProduct" />
-      <item itemvalue="JUnit.ReceiptTest.getProducts" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.StockItemTest.getProduct" />
-        <item itemvalue="JUnit.ReceiptTest.getProducts" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -219,7 +171,7 @@
       <workItem from="1747592024296" duration="12831000" />
       <workItem from="1747646117709" duration="2846000" />
       <workItem from="1747770762024" duration="2359000" />
-      <workItem from="1747834442241" duration="14129000" />
+      <workItem from="1747834442241" duration="16346000" />
     </task>
     <servers />
   </component>
@@ -238,7 +190,7 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ProjectStore$Test.ic" NAME="Test Coverage Results" MODIFIED="1747868112749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/ProjectStore$Test.ic" NAME="Test Coverage Results" MODIFIED="1747868298527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/ProjectStore$CashRegisterTest.ic" NAME="CashRegisterTest Coverage Results" MODIFIED="1747849627323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>Store.*</FILTER>
     </SUITE>
