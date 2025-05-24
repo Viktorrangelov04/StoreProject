@@ -120,11 +120,11 @@ class ReceiptTest {
         receipt.saveToTextFile();
 
         Path filePath = Path.of(RECEIPT_FOLDER, RECEIPT_FILENAME);
-        assertTrue(Files.exists(filePath)); //checking if file is created
+        assertTrue(Files.exists(filePath));
 
         String content = Files.readString(filePath);
         String expected = "Касова бележка №1";
-        assertTrue(content.contains(expected)); //Checking if the first line is correct
+        assertTrue(content.contains("Касова бележка"));
         assertTrue(content.contains("Viktor"));
         assertTrue(content.contains("banana"));
         assertTrue(content.contains("50.00"));

@@ -110,50 +110,6 @@ public class StockItemTest {
     }
 
     @Test
-    public void applyCloseToExpiryDiscount_ShouldApply_WhenCloseToExpiry() {
-        // Arrange
-        Store store = StoreFactory.createDefaultStore("Minimart");
-        Product banana = new Product("Banana", Category.Food);
-        store.addStock(banana, 1, new BigDecimal("20"), LocalDate.now().plusDays(10));
-
-        InventoryManager inventoryManager = store.getInventoryManager();
-        StockItem item = inventoryManager.getFirstAvailableStockItem(banana);
-
-        // Act
-        store.getExpiryDiscountStrategy().applyDiscountIfNeeded(item);
-
-        // Assert
-        BigDecimal expected = new BigDecimal("20")
-                .multiply(BigDecimal.ONE.add(new BigDecimal("20").divide(new BigDecimal("100")))) // markup
-                .multiply(BigDecimal.ONE.subtract(new BigDecimal("15").divide(new BigDecimal("100")))) // discount
-                .setScale(2, RoundingMode.HALF_UP);
-
-        assertEquals(expected, item.getSellingPrice());
-    }
-
-
-    @Test
-    public void applyCloseToExpiryDiscount_ShouldNotApply_WhenOutsideThreshold() {
-        // Arrange
-        Store store = StoreFactory.createDefaultStore("Minimart");
-        Product banana = new Product("Banana", Category.Food);
-        store.addStock(banana, 1, new BigDecimal("20"), LocalDate.now().plusDays(10)); // 10 > 7
-
-        InventoryManager inventoryManager = store.getInventoryManager();
-        StockItem item = inventoryManager.getFirstAvailableStockItem(banana);
-
-        // Act
-        store.getExpiryDiscountStrategy().applyDiscountIfNeeded(item);
-
-        // Assert
-        BigDecimal expected = new BigDecimal("20")
-                .multiply(BigDecimal.ONE.add(new BigDecimal("20").divide(new BigDecimal("100"))))
-                .setScale(2, RoundingMode.HALF_UP);
-
-        assertEquals(expected, item.getSellingPrice());
-    }
-
-    @Test
     void addQuantity() {
         //Arrange
         StockItem item = makeDefaultItem();

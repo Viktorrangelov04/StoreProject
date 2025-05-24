@@ -5,14 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ca1a20-c2a8-400c-aad1-5e2be4be4c6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/exceptions/InsufficientFundsExceptionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pricing/ExpiryDiscountStrategyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/pricing/MarkupStrategyTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/services/EmployeeManagerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/services/FinancialManagerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/services/InventoryManagerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/services/PurchaseManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/InventoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/InventoryManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/storage/FileReceiptStorageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/storage/FileReceiptStorageTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +89,7 @@
     "Gradle.StockItemTest.isCloseToExpiry.executor": "Profiler#1",
     "JUnit.CashRegisterTest.executor": "Coverage",
     "JUnit.ExpiryDiscountStrategyTest.executor": "Run",
+    "JUnit.FileReceiptStorageTest.executor": "Run",
     "JUnit.FinancialManagerTest.addDeliveryCost.executor": "Run",
     "JUnit.FinancialManagerTest.executor": "Run",
     "JUnit.MarkupStrategyTest.executor": "Run",
@@ -107,7 +103,7 @@
     "JUnit.StockItemTest.equals_ShouldReturnTrue_ForSameValues.executor": "Debug",
     "JUnit.StockItemTest.getProduct.executor": "Run",
     "JUnit.StockItemTest.getSellingPrice.executor": "Run",
-    "JUnit.Test.executor": "Run",
+    "JUnit.Test.executor": "Coverage",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -145,80 +141,18 @@
       <recent name="Store" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.FinancialManagerTest">
-    <configuration name="FinancialManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ReceiptTest.saveToTextFile_ShouldCreateFileWithExpectedContent">
+    <configuration name="ReceiptTest.saveToTextFile_ShouldCreateFileWithExpectedContent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProjectStore.test" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="services.*" />
+          <option name="PATTERN" value="domain.receipt.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="services" />
-      <option name="MAIN_CLASS_NAME" value="services.FinancialManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="FinancialManagerTest.addDeliveryCost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ProjectStore.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="services" />
-      <option name="MAIN_CLASS_NAME" value="services.FinancialManagerTest" />
-      <option name="METHOD_NAME" value="addDeliveryCost" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MarkupStrategyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ProjectStore.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pricing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pricing" />
-      <option name="MAIN_CLASS_NAME" value="pricing.MarkupStrategyTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MarkupStrategyTest.getAllMarkups" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ProjectStore.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pricing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pricing" />
-      <option name="MAIN_CLASS_NAME" value="pricing.MarkupStrategyTest" />
-      <option name="METHOD_NAME" value="getAllMarkups" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="MarkupStrategyTest.getMarkup" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ProjectStore.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="pricing.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="pricing" />
-      <option name="MAIN_CLASS_NAME" value="pricing.MarkupStrategyTest" />
-      <option name="METHOD_NAME" value="getMarkup" />
+      <option name="PACKAGE_NAME" value="domain.receipt" />
+      <option name="MAIN_CLASS_NAME" value="domain.receipt.ReceiptTest" />
+      <option name="METHOD_NAME" value="saveToTextFile_ShouldCreateFileWithExpectedContent" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -228,7 +162,7 @@
       <module name="ProjectStore.test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="ALTERNATIVE_JRE_PATH" value="temurin-21" />
-      <option name="PACKAGE_NAME" value="store" />
+      <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
@@ -236,13 +170,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.Test" />
+      <item itemvalue="JUnit.ReceiptTest.saveToTextFile_ShouldCreateFileWithExpectedContent" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FinancialManagerTest" />
-        <item itemvalue="JUnit.FinancialManagerTest.addDeliveryCost" />
-        <item itemvalue="JUnit.MarkupStrategyTest" />
-        <item itemvalue="JUnit.MarkupStrategyTest.getAllMarkups" />
-        <item itemvalue="JUnit.MarkupStrategyTest.getMarkup" />
+        <item itemvalue="JUnit.ReceiptTest.saveToTextFile_ShouldCreateFileWithExpectedContent" />
       </list>
     </recent_temporary>
   </component>
@@ -285,7 +219,7 @@
       <workItem from="1747926737138" duration="2067000" />
       <workItem from="1747930279935" duration="366000" />
       <workItem from="1748020006302" duration="14629000" />
-      <workItem from="1748083363971" duration="29814000" />
+      <workItem from="1748083363971" duration="31526000" />
     </task>
     <servers />
   </component>
@@ -315,7 +249,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ProjectStore$Test.ic" NAME="Test Coverage Results" MODIFIED="1747868298527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/ProjectStore$Test.ic" NAME="Test Coverage Results" MODIFIED="1748124945753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/ProjectStore$CashRegisterTest.ic" NAME="CashRegisterTest Coverage Results" MODIFIED="1747849627323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>Store.*</FILTER>
     </SUITE>
