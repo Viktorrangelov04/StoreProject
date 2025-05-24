@@ -1,24 +1,21 @@
 package pricing;
 
-import domain.product.Category;
 import domain.product.StockItem;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Map;
 
 public class PricingStrategy {
-    private final Map<Category, BigDecimal> markupPercentages;
+    private final MarkupStrategy markupStrategy;
 
-    public PricingStrategy(Map<Category, BigDecimal> markupPercentages) {
-        this.markupPercentages = markupPercentages;
+    public PricingStrategy(MarkupStrategy markupStrategy) {
+        this.markupStrategy = markupStrategy;
     }
 
     public BigDecimal calculateSellingPrice(StockItem item) {
-        Category category = item.getProduct().getCategory();
-        BigDecimal markup = markupPercentages.get(category);
+        BigDecimal markup = markupStrategy.getMarkup(item.getProduct().getCategory());
         if (markup == null) {
-            throw new IllegalArgumentException("Missing markup configuration for category: " + category);
+            throw new IllegalArgumentException("Missing markup configuration for category: " + item.getProduct().getCategory());
         }
 
         BigDecimal rate = markup.divide(BigDecimal.valueOf(100));

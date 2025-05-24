@@ -65,15 +65,8 @@ public class Store {
     public BigDecimal getMarkup(Category category){
         return markupPercentages.getOrDefault(category, BigDecimal.ZERO);
     }
-    public BigDecimal getTotalSalaries() {
-        return cashiers.stream()
-                .map(Cashier::getSalary)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-    }
 
-    public BigDecimal getTotalExpenses() {
-        return totalDeliveryCost.add(getTotalSalaries());
-    }
+
 
     public List<Cashier> getCashiers() {
         return cashiers;

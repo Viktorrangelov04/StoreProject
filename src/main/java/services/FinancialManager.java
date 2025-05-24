@@ -9,6 +9,11 @@ public class FinancialManager {
     private BigDecimal storeRevenue = BigDecimal.ZERO;
     private BigDecimal totalDeliveryCost = BigDecimal.ZERO;
 
+    public FinancialManager(BigDecimal storeRevenue, BigDecimal totalDeliveryCost){
+        this.storeRevenue = storeRevenue;
+        this.totalDeliveryCost = totalDeliveryCost;
+    }
+
     public BigDecimal getStoreRevenue() {
         return storeRevenue;
     }

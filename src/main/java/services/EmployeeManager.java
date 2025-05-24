@@ -11,6 +11,10 @@ public class EmployeeManager {
     private final List<Cashier> cashiers = new ArrayList<>();
     private final List<CashRegister> cashRegisters = new ArrayList<>();
 
+    public List<Cashier> getAllCashiers() {
+        return new ArrayList<>(cashiers); // Return copy for safety
+    }
+
     public Cashier addCashier(String name, BigDecimal salary) {
         Cashier cashier = new Cashier(name, salary);
         cashiers.add(cashier);
