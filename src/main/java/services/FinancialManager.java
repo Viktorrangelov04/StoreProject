@@ -9,12 +9,20 @@ public class FinancialManager {
     private BigDecimal storeRevenue = BigDecimal.ZERO;
     private BigDecimal totalDeliveryCost = BigDecimal.ZERO;
 
-    public void increaseTotalDeliveryCost(BigDecimal currentDeliveryCost) {
-        this.totalDeliveryCost = this.totalDeliveryCost.add(currentDeliveryCost);
+    public BigDecimal getStoreRevenue() {
+        return storeRevenue;
     }
 
-    public void increaseStoreRevenue(BigDecimal currentRevenue) {
-        this.storeRevenue = this.storeRevenue.add(currentRevenue);
+    public BigDecimal getTotalDeliveryCost() {
+        return totalDeliveryCost;
+    }
+
+    public void addDeliveryCost(BigDecimal cost) {
+        this.totalDeliveryCost = this.totalDeliveryCost.add(cost);
+    }
+
+    public void addRevenue(BigDecimal amount) {
+        this.storeRevenue = this.storeRevenue.add(amount);
     }
 
     public BigDecimal calculateProfit(List<Cashier> cashiers) {

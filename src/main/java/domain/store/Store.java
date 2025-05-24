@@ -2,44 +2,49 @@ package domain.store;
 
 import domain.receipt.Receipt;
 import domain.product.Category;
-import domain.product.InsufficientStockException;
 import domain.product.Product;
 import domain.product.StockItem;
+import pricing.PricingStrategy;
+import services.EmployeeManager;
 import services.InventoryManager;
+import services.PurchaseManager;
 import storage.FileReceiptStorage;
 import storage.ReceiptStorage;
 
-import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.*;
 
 public class Store {
-    public final InventoryManager inventoryManager;
     private final String id;
     private String storeName;
+
+    private final InventoryManager inventoryManager;
+    private final PricingStrategy pricingStrategy;
+    private final EmployeeManager employeeManager;
+    private final PurchaseManager purchaseManager;
+    private final ReceiptStorage receiptStorage;
+
     private BigDecimal expiryDiscountPercent;
     private int daysBeforeExpirationThreshold;
-    private final Map<Category, BigDecimal> markupPercentages = new HashMap<>();
+
     private final Map<StockItem, Integer> cart = new HashMap<>();
-    private BigDecimal storeRevenue;
-    private BigDecimal storeProfit;
-    private BigDecimal totalDeliveryCost = BigDecimal.ZERO;
-    private final List<Cashier> cashiers = new ArrayList<>();
-    private final List<CashRegister> cashRegistries = new ArrayList<>();
     ReceiptStorage storage = new FileReceiptStorage();
 
-    public Store(InventoryManager inventoryManager, String storeName, BigDecimal foodMarkupPercent, BigDecimal nonFoodMarkupPercent, BigDecimal expiryDiscountPercent, int daysBeforeExpirationThreshold){
+    public Store(InventoryManager inventoryManager,PricingStrategy pricingStrategy, EmployeeManager employeeManager, PurchaseManager purchaseManager, ReceiptStorage receiptStorage, String storeName,   BigDecimal expiryDiscountPercent, int daysBeforeExpirationThreshold){
         this.id = UUID.randomUUID().toString();
+
+        //New code
         this.inventoryManager = inventoryManager;
+        this.pricingStrategy = pricingStrategy;
+        this.employeeManager = employeeManager;
+        this.purchaseManager = purchaseManager;
+        this.receiptStorage = receiptStorage;
+        //New code
+
         this.storeName = storeName;
-        markupPercentages.put(Category.NonFood, nonFoodMarkupPercent);
-        markupPercentages.put(Category.Food, foodMarkupPercent);
         this.expiryDiscountPercent = expiryDiscountPercent;
         this.daysBeforeExpirationThreshold = daysBeforeExpirationThreshold;
-        this.storeRevenue = BigDecimal.ZERO;
-        this.storeProfit = BigDecimal.ZERO;
     }
 
     public String getId(){
@@ -66,16 +71,8 @@ public class Store {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    public BigDecimal getTotalDeliveryCost() {
-        return totalDeliveryCost;
-    }
-
     public BigDecimal getTotalExpenses() {
         return totalDeliveryCost.add(getTotalSalaries());
-    }
-
-    public BigDecimal getProfit() {
-        return storeRevenue.subtract(getTotalExpenses());
     }
 
     public List<Cashier> getCashiers() {
@@ -91,138 +88,31 @@ public class Store {
         }
         expiryDiscountPercent = newPercent;
     }
-    public void setDaysBeforeExpirationThreshold(int newThreshold){
-        daysBeforeExpirationThreshold = newThreshold;
-    }
-    public void setMarkup(Category category, BigDecimal newPercent){
-        if(newPercent.compareTo(BigDecimal.ZERO)<0 || newPercent.compareTo(BigDecimal.valueOf(100))>0){
-            throw new IllegalArgumentException("Percent has to be between 0 and 100%");
-        }
-        markupPercentages.put(category, newPercent);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//    public void setDaysBeforeExpirationThreshold(int newThreshold){
+//        daysBeforeExpirationThreshold = newThreshold;
+//    }
+//    public void setMarkup(Category category, BigDecimal newPercent){
+//        if(newPercent.compareTo(BigDecimal.ZERO)<0 || newPercent.compareTo(BigDecimal.valueOf(100))>0){
+//            throw new IllegalArgumentException("Percent has to be between 0 and 100%");
+//        }
+//        markupPercentages.put(category, newPercent);
+//    }
 
     public void addToCart(StockItem item, int quantity){
         int current = cart.getOrDefault(item, 0);
         cart.put(item, current+quantity);
-
     }
 
-    public void buyProducts(Scanner scanner, BigDecimal clientMoney, Cashier cashier) throws InsufficientStockException, IOException {
-        cart.clear();
-        int cartQuantity = 0;
-        BigDecimal totalCost = BigDecimal.ZERO;
 
-        while (true) {
-            System.out.print("Insert product name(or 'done' to finalize purchase): ");
-            String input = scanner.nextLine().trim();
 
-            if (input.equalsIgnoreCase("done")) {
-                break;
-            }
 
-            Product product = InventoryManager.findProductByName(input);
-            if (product == null) {
-                System.out.println("Product isn't found");
-                continue;
-            }
+    //UPDATED METHDOS AFTER ENCAPSULATION
 
-            System.out.print("Quantity: ");
-            int quantity;
-            try {
-                quantity = Integer.parseInt(scanner.nextLine());
-                if (quantity <= 0) {
-                    System.out.println("Please enter a positive number.");
-                    continue;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid quantity. Please enter a valid number.");
-                continue;
-            }
-
-            List<StockItem> stockItems = inventory.get(product);
-            if (stockItems == null || stockItems.isEmpty()) {
-                System.out.println("Product is out of stock");
-                continue;
-            }
-
-            // Сумираме всички налични и валидни StockItem-и за този продукт
-            int totalAvailable = stockItems.stream()
-                    .filter(item -> item.getQuantity() > 0 && !item.isExpired())
-                    .mapToInt(StockItem::getQuantity)
-                    .sum();
-
-            if (totalAvailable < quantity) {
-                throw new InsufficientStockException(stockItems.get(0), quantity, totalAvailable);
-            }
-
-            // Засега добавяме само първия валиден stock item, както беше в оригинала
-            StockItem item = getFirstAvailableStockItem(product);
-            if (item != null) {
-                addToCart(item, quantity);
-            }
-        }
-
-        for (Map.Entry<StockItem, Integer> entry : cart.entrySet()) {
-            StockItem item = entry.getKey();
-            int quantity = entry.getValue();
-
-            if (item.getQuantity() < quantity) {
-                throw new InsufficientStockException(item, quantity, item.getQuantity());
-            }
-
-            if (item.isExpired()) {
-                System.out.println("Product \"" + item.getProduct().getName() + "\" is expired");
-                continue;
-            }
-
-            if (item.isCloseToExpiry(daysBeforeExpirationThreshold)) {
-                item.applyCloseToExpiryDiscount(expiryDiscountPercent, daysBeforeExpirationThreshold);
-            }
-
-            totalCost = totalCost.add(item.getSellingPrice().multiply(BigDecimal.valueOf(quantity)));
-        }
-
-        System.out.println("Total cost: " + totalCost.setScale(2, RoundingMode.HALF_UP) + " BGN");
-
-        if (clientMoney.compareTo(totalCost) < 0) {
-            BigDecimal need = totalCost.subtract(clientMoney);
-            System.out.println("You don't have enough money. You need: " + need + " BGN more");
-            return;
-        }
-
-        storeRevenue = storeRevenue.add(totalCost);
-
-        for (Map.Entry<StockItem, Integer> entry : cart.entrySet()) {
-            StockItem item = entry.getKey();
-            int quantity = entry.getValue();
-
-            int newQuantity = item.getQuantity() - quantity;
-            item.setQuantity(newQuantity);
-
-            BigDecimal profit = item.getSellingPrice().multiply(BigDecimal.valueOf(quantity))
-                    .subtract(item.getDeliveryPrice().multiply(BigDecimal.valueOf(quantity)));
-            storeProfit = storeProfit.add(profit);
-            cartQuantity++;
-        }
-
-        int serialNumber = storage.getNextReceiptNumber();
-        Receipt receipt = new Receipt(serialNumber, cashier, cart, cartQuantity, totalCost);
-        storage.saveReceipt(receipt);
+    public void addStock(Product product, int quantity, BigDecimal deliveryPrice, LocalDate expiryDate){
+        StockItem item = new StockItem(product, deliveryPrice, quantity, expiryDate);
+        BigDecimal sellingPrice = pricingStrategy.calculateSellingPrice(item);
+        item.setSellingPrice(sellingPrice);
+        inventoryManager.addStock(item);
     }
+
 }
