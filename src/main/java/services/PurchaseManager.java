@@ -1,6 +1,6 @@
 package services;
 
-import domain.product.InsufficientStockException;
+import exceptions.InsufficientStockException;
 import domain.product.Product;
 import domain.product.StockItem;
 import domain.receipt.Receipt;
