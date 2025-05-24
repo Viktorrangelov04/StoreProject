@@ -5,31 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ca1a20-c2a8-400c-aad1-5e2be4be4c6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/pricing/MarkupPricingStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/pricing/PricingStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/EmployeeManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/FinancialManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/PurchaseService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/inventoryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Products/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/product/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Products/InsufficientStockException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/product/InsufficientStockException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Products/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/product/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Products/StockItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/product/StockItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Store/CashRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/store/CashRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Store/Cashier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/store/Cashier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Store/FileReceiptStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storage/FileReceiptStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Store/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/receipt/Receipt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Store/ReceiptStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storage/ReceiptStorage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Store/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/store/Store.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Products/InsufficientStockExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/product/InsufficientStockExceptionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Products/ProductTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/product/ProductTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Products/StockItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/product/StockItemTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Store/CashRegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/store/CashRegisterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Store/CashierTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/store/CashierTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Store/FileReceiptStorageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/store/FileReceiptStorageTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Store/ReceiptTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/store/ReceiptTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/store/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/store/Store.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/EmployeeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/EmployeeManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/FinancialManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/FinancialManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/InventoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/InventoryManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +180,7 @@
       <workItem from="1747926553588" duration="70000" />
       <workItem from="1747926737138" duration="2067000" />
       <workItem from="1747930279935" duration="366000" />
-      <workItem from="1748020006302" duration="12575000" />
+      <workItem from="1748020006302" duration="13592000" />
     </task>
     <servers />
   </component>

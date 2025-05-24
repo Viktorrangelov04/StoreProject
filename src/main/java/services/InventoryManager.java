@@ -2,9 +2,11 @@ package services;
 
 import domain.product.Product;
 import domain.product.StockItem;
+import domain.store.Cashier;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,17 +15,29 @@ import java.util.Map;
 public class InventoryManager {
     private final Map<Product, List<StockItem>> inventory = new HashMap<>();
 
-    public void addStock(StockItem newItem) {
-        Product product = newItem.getProduct();
-
+    public void addStock(Cashier cashier, Product product, int quantity, BigDecimal deliveryPrice, LocalDate expiryDate) {
         BigDecimal markup = this.getMarkup(product.getCategory());
         BigDecimal markupRate = markup.divide(new BigDecimal("100"));
+        BigDecimal sellingPrice = deliveryPrice
+                .multiply(BigDecimal.ONE.add(markupRate))
+                .setScale(2, RoundingMode.HALF_UP);
+
+        StockItem newItem = new StockItem(product, deliveryPrice, quantity, expiryDate);
+        newItem.setSellingPrice(sellingPrice);
+
+        BigDecimal deliveryTotal = deliveryPrice.multiply(BigDecimal.valueOf(quantity));
+        totalDeliveryCost = totalDeliveryCost.add(deliveryTotal);
+        InventoryManager.computeIfAbsent(product, k -> new ArrayList<>()).add(newItem);
+    }
+
+    public void addStock(StockItem newItem, BigDecimal markupPercent) {
+        BigDecimal markupRate = markupPercent.divide(new BigDecimal("100"));
         BigDecimal sellingPrice = newItem.getDeliveryPrice()
                 .multiply(BigDecimal.ONE.add(markupRate))
                 .setScale(2, RoundingMode.HALF_UP);
         newItem.setSellingPrice(sellingPrice);
 
-        inventory.computeIfAbsent(product, k -> new ArrayList<>()).add(newItem);
+        inventory.computeIfAbsent(newItem.getProduct(), k -> new ArrayList<>()).add(newItem);
     }
 
     public Product findProductByName(String name){

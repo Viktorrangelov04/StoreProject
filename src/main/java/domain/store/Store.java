@@ -101,53 +101,17 @@ public class Store {
         markupPercentages.put(category, newPercent);
     }
 
-    public Cashier addCashier(String name, BigDecimal salary) {
-        Cashier cashier = new Cashier(name, salary);
-        cashiers.add(cashier);
-        return cashier;
-    }
-
-    public CashRegister addCashRegistry() {
-        CashRegister registry = new CashRegister();
-        cashRegistries.add(registry);
-        return registry;
-    }
-
-    public boolean assignToFirstAvailableRegister(Cashier cashier) {
-        for (CashRegister registry : cashRegistries) {
-            if (registry.isAvailable()) {
-                registry.assign(cashier);
-                System.out.println("Cashier " + cashier.getName() + " assigned to a register.");
-                return true;
-            }
-        }
-        System.out.println("No available registers for cashier " + cashier.getName());
-        return false;
-    }
-
-    public void unassignWorkerFromCashRegistry(int index) {
-        if (index < 0 || index >= cashRegistries.size()) {
-            throw new IndexOutOfBoundsException("Invalid registry index");
-        }
-        cashRegistries.get(index).unassign();
-    }
 
 
 
-    public void addStock(Cashier cashier, Product product, int quantity, BigDecimal deliveryPrice, LocalDate expiryDate) {
-        BigDecimal markup = this.getMarkup(product.getCategory());
-        BigDecimal markupRate = markup.divide(new BigDecimal("100"));
-        BigDecimal sellingPrice = deliveryPrice
-                .multiply(BigDecimal.ONE.add(markupRate))
-                .setScale(2, RoundingMode.HALF_UP);
 
-        StockItem newItem = new StockItem(product, deliveryPrice, quantity, expiryDate);
-        newItem.setSellingPrice(sellingPrice);
 
-        BigDecimal deliveryTotal = deliveryPrice.multiply(BigDecimal.valueOf(quantity));
-        totalDeliveryCost = totalDeliveryCost.add(deliveryTotal);
-        inventory.computeIfAbsent(product, k -> new ArrayList<>()).add(newItem);
-    }
+
+
+
+
+
+
 
 
 
@@ -172,7 +136,7 @@ public class Store {
                 break;
             }
 
-            Product product = findProductByName(input);
+            Product product = InventoryManager.findProductByName(input);
             if (product == null) {
                 System.out.println("Product isn't found");
                 continue;
