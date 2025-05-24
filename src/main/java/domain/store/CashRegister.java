@@ -1,4 +1,4 @@
-package Store;
+package domain.store;
 
 public class CashRegister {
     private boolean available = true;

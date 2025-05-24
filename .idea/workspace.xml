@@ -5,8 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ca1a20-c2a8-400c-aad1-5e2be4be4c6c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/pricing/MarkupPricingStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/pricing/PricingStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/EmployeeManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/FinancialManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/PurchaseService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/inventoryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Store/ReceiptTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Store/ReceiptTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Products/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/product/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Products/InsufficientStockException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/product/InsufficientStockException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Products/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/product/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Products/StockItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/product/StockItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Store/CashRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/store/CashRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Store/Cashier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/store/Cashier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Store/FileReceiptStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storage/FileReceiptStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Store/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/receipt/Receipt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Store/ReceiptStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storage/ReceiptStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Store/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/store/Store.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Products/InsufficientStockExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/product/InsufficientStockExceptionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Products/ProductTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/product/ProductTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Products/StockItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/product/StockItemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Store/CashRegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/store/CashRegisterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Store/CashierTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/store/CashierTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Store/FileReceiptStorageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/store/FileReceiptStorageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Store/ReceiptTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/store/ReceiptTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,8 +66,8 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="JUnit5 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -74,7 +97,6 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
@@ -88,12 +110,15 @@
     "Gradle.StockItemTest.isCloseToExpiry.executor": "Profiler#1",
     "JUnit.CashRegisterTest.executor": "Coverage",
     "JUnit.ProductTest.executor": "Run",
+    "JUnit.ReceiptTest.executor": "Run",
     "JUnit.ReceiptTest.formatReceipt.executor": "Run",
     "JUnit.ReceiptTest.getProducts.executor": "Run",
+    "JUnit.ReceiptTest.getTimestamp.executor": "Run",
     "JUnit.StockItemTest.equals_ShouldReturnTrue_ForSameValues.executor": "Debug",
     "JUnit.StockItemTest.getProduct.executor": "Run",
-    "JUnit.Test.executor": "Coverage",
+    "JUnit.Test.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
@@ -101,7 +126,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Projects/ProjectStore/build.gradle",
+    "last_opened_file_path": "D:/Projects/ProjectStore",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -110,7 +135,7 @@
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -128,7 +153,7 @@
       <module name="ProjectStore.test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="ALTERNATIVE_JRE_PATH" value="temurin-21" />
-      <option name="PACKAGE_NAME" value="Store" />
+      <option name="PACKAGE_NAME" value="store" />
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
@@ -171,7 +196,11 @@
       <workItem from="1747592024296" duration="12831000" />
       <workItem from="1747646117709" duration="2846000" />
       <workItem from="1747770762024" duration="2359000" />
-      <workItem from="1747834442241" duration="16346000" />
+      <workItem from="1747834442241" duration="19581000" />
+      <workItem from="1747926553588" duration="70000" />
+      <workItem from="1747926737138" duration="2067000" />
+      <workItem from="1747930279935" duration="366000" />
+      <workItem from="1748020006302" duration="12575000" />
     </task>
     <servers />
   </component>

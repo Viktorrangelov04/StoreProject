@@ -1,6 +1,5 @@
-package Products;
+package domain.product;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.UUID;
 

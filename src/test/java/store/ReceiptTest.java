@@ -1,11 +1,17 @@
-package Store;
+package store;
 
-import Products.Category;
-import Products.Product;
-import Products.StockItem;
+import domain.store.Cashier;
+import domain.receipt.Receipt;
+import domain.product.Category;
+import domain.product.Product;
+import domain.product.StockItem;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.math.BigDecimal;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Map;
@@ -21,7 +27,7 @@ class ReceiptTest {
         item.setSellingPrice(new BigDecimal("50"));
         Map<StockItem, Integer> cart = Map.of(item, 2);
 
-        int quantity = 10;
+        int quantity = 2;
         BigDecimal price = new BigDecimal("100");
         LocalDateTime fixedTime = LocalDateTime.of(2025, 5, 22, 0, 0);
         return new Receipt(serial, cashier, cart, quantity, price,fixedTime);
@@ -57,7 +63,7 @@ class ReceiptTest {
         //Arrange
         Receipt receipt = makeDefaultReceipt();
         //Assert
-        assertEquals(10, receipt.getItemQuantity());
+        assertEquals(2, receipt.getItemQuantity());
     }
 
     @Test
@@ -98,8 +104,33 @@ class ReceiptTest {
         assertEquals(expected, receipt.formatReceipt());
     }
 
+    private static final String RECEIPT_FOLDER = "receipts";
+    private static final String RECEIPT_FILENAME = "receipt_1.txt";
+
+    @AfterEach
+    void cleanup() throws IOException {
+        Path path = Path.of(RECEIPT_FOLDER, RECEIPT_FILENAME);
+        if (Files.exists(path)) {
+            Files.delete(path);
+        }
+    }
+
     @Test
-    void saveToTextFile() {
+    void saveToTextFile_ShouldCreateFileWithExpectedContent() throws IOException {
+        Receipt receipt = makeDefaultReceipt();
+        receipt.saveToTextFile();
+
+        Path filePath = Path.of(RECEIPT_FOLDER, RECEIPT_FILENAME);
+        assertTrue(Files.exists(filePath)); //checking if file is created
+
+        String content = Files.readString(filePath);
+        String expected = "Касова бележка №1";
+        assertTrue(content.contains(expected)); //Checking if the first line is correct
+        assertTrue(content.contains("Viktor"));
+        assertTrue(content.contains("banana"));
+        assertTrue(content.contains("50.00"));
+        assertTrue(content.contains("100.00"));
+        assertTrue(content.contains("2025-05-22 00:00:00"));
     }
 
     @Test

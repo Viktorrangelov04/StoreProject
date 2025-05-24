@@ -1,4 +1,4 @@
-package Products;
+package domain.product;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

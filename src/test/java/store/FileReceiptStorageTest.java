@@ -1,8 +1,6 @@
-package Store;
+package store;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class FileReceiptStorageTest {
 

@@ -1,6 +1,9 @@
-package Products;
+package product;
 
+import domain.product.Product;
 import org.junit.jupiter.api.Test;
+import domain.product.Category;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ProductTest {

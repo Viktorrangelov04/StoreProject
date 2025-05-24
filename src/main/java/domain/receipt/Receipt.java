@@ -1,6 +1,7 @@
-package Store;
+package domain.receipt;
 
-import Products.StockItem;
+import domain.product.StockItem;
+import domain.store.Cashier;
 
 import java.io.*;
 import java.math.BigDecimal;

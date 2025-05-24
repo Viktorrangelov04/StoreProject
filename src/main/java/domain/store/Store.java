@@ -1,9 +1,13 @@
-package Store;
+package domain.store;
 
-import Products.Category;
-import Products.InsufficientStockException;
-import Products.Product;
-import Products.StockItem;
+import domain.receipt.Receipt;
+import domain.product.Category;
+import domain.product.InsufficientStockException;
+import domain.product.Product;
+import domain.product.StockItem;
+import services.InventoryManager;
+import storage.FileReceiptStorage;
+import storage.ReceiptStorage;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -12,12 +16,12 @@ import java.time.LocalDate;
 import java.util.*;
 
 public class Store {
+    public final InventoryManager inventoryManager;
     private final String id;
     private String storeName;
     private BigDecimal expiryDiscountPercent;
     private int daysBeforeExpirationThreshold;
     private final Map<Category, BigDecimal> markupPercentages = new HashMap<>();
-    private final Map<Product, List<StockItem>> inventory = new HashMap<>();
     private final Map<StockItem, Integer> cart = new HashMap<>();
     private BigDecimal storeRevenue;
     private BigDecimal storeProfit;
@@ -26,8 +30,9 @@ public class Store {
     private final List<CashRegister> cashRegistries = new ArrayList<>();
     ReceiptStorage storage = new FileReceiptStorage();
 
-    public Store(String storeName, BigDecimal foodMarkupPercent, BigDecimal nonFoodMarkupPercent, BigDecimal expiryDiscountPercent, int daysBeforeExpirationThreshold){
+    public Store(InventoryManager inventoryManager, String storeName, BigDecimal foodMarkupPercent, BigDecimal nonFoodMarkupPercent, BigDecimal expiryDiscountPercent, int daysBeforeExpirationThreshold){
         this.id = UUID.randomUUID().toString();
+        this.inventoryManager = inventoryManager;
         this.storeName = storeName;
         markupPercentages.put(Category.NonFood, nonFoodMarkupPercent);
         markupPercentages.put(Category.Food, foodMarkupPercent);
@@ -127,18 +132,7 @@ public class Store {
         cashRegistries.get(index).unassign();
     }
 
-    public void addStock(StockItem newItem) {
-        Product product = newItem.getProduct();
 
-        BigDecimal markup = this.getMarkup(product.getCategory());
-        BigDecimal markupRate = markup.divide(new BigDecimal("100"));
-        BigDecimal sellingPrice = newItem.getDeliveryPrice()
-                .multiply(BigDecimal.ONE.add(markupRate))
-                .setScale(2, RoundingMode.HALF_UP);
-        newItem.setSellingPrice(sellingPrice);
-
-        inventory.computeIfAbsent(product, k -> new ArrayList<>()).add(newItem);
-    }
 
     public void addStock(Cashier cashier, Product product, int quantity, BigDecimal deliveryPrice, LocalDate expiryDate) {
         BigDecimal markup = this.getMarkup(product.getCategory());
@@ -155,26 +149,9 @@ public class Store {
         inventory.computeIfAbsent(product, k -> new ArrayList<>()).add(newItem);
     }
 
-    public Product findProductByName(String name){
-        for(Product p: inventory.keySet()){
-            if(p.getName().equalsIgnoreCase(name)){
-                return p;
-            }
-        }
-        return null;
-    }
 
-    private StockItem getFirstAvailableStockItem(Product product) {
-        List<StockItem> stockList = inventory.get(product);
-        if (stockList == null || stockList.isEmpty()) return null;
 
-        for (StockItem item : stockList) {
-            if (item.getQuantity() > 0 && !item.isExpired()) {
-                return item;
-            }
-        }
-        return null;
-    }
+
 
     public void addToCart(StockItem item, int quantity){
         int current = cart.getOrDefault(item, 0);

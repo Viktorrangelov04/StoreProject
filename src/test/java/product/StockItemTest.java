@@ -1,7 +1,10 @@
-package Products;
+package product;
 
-import Store.Store;
+import domain.store.Store;
+import domain.product.Product;
+import domain.product.StockItem;
 import org.junit.jupiter.api.Test;
+import domain.product.Category;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

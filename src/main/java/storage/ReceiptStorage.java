@@ -1,4 +1,6 @@
-package Store;
+package storage;
+
+import domain.receipt.Receipt;
 
 import java.util.List;
 

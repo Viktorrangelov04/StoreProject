@@ -1,4 +1,4 @@
-package Products;
+package domain.product;
 
 public class InsufficientStockException extends Exception {
     public InsufficientStockException(StockItem item, int requested, int available) {
