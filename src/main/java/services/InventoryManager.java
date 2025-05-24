@@ -30,7 +30,11 @@ public class InventoryManager {
         return null;
     }
 
-    private StockItem getFirstAvailableStockItem(Product product) {
+    public List<StockItem> getStockForProduct(Product product) {
+        return inventory.getOrDefault(product, new ArrayList<>());
+    }
+
+    public StockItem getFirstAvailableStockItem(Product product) {
         List<StockItem> stockList = inventory.get(product);
         if (stockList == null || stockList.isEmpty()) return null;
 

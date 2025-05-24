@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ca1a20-c2a8-400c-aad1-5e2be4be4c6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/StoreFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/product/InsufficientStockException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exceptions/InsufficientStockException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/store/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/store/Store.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pricing/MarkupStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pricing/MarkupStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pricing/PricingStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pricing/PricingStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pricing/ExpiryDiscountStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pricing/ExpiryDiscountStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/InventoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/InventoryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/PurchaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/PurchaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/product/InsufficientStockExceptionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/product/InsufficientStockExceptionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/StoreFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/StoreFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +182,7 @@
       <workItem from="1747926737138" duration="2067000" />
       <workItem from="1747930279935" duration="366000" />
       <workItem from="1748020006302" duration="14629000" />
-      <workItem from="1748083363971" duration="11819000" />
+      <workItem from="1748083363971" duration="14347000" />
     </task>
     <servers />
   </component>

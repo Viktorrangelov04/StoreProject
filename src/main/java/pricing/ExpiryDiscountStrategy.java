@@ -9,6 +9,14 @@ public class ExpiryDiscountStrategy {
     private final BigDecimal discountPercent;
     private final int daysBeforeExpiryThreshold;
 
+    public BigDecimal getDiscountPercent() {
+        return discountPercent;
+    }
+
+    public int getDaysBeforeExpiryThreshold() {
+        return daysBeforeExpiryThreshold;
+    }
+
     public ExpiryDiscountStrategy(BigDecimal discountPercent, int daysBeforeExpiryThreshold) {
         if (discountPercent.compareTo(BigDecimal.ZERO) < 0 || discountPercent.compareTo(BigDecimal.valueOf(100)) > 0) {
             throw new IllegalArgumentException("Discount must be between 0 and 100%");

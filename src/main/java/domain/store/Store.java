@@ -3,9 +3,11 @@ package domain.store;
 import domain.product.Category;
 import domain.product.Product;
 import domain.product.StockItem;
+import pricing.ExpiryDiscountStrategy;
 import pricing.MarkupStrategy;
 import pricing.PricingStrategy;
 import services.EmployeeManager;
+import services.FinancialManager;
 import services.InventoryManager;
 import services.PurchaseManager;
 import storage.FileReceiptStorage;
@@ -21,25 +23,34 @@ public class Store {
 
     private final InventoryManager inventoryManager;
     private final EmployeeManager employeeManager;
-    private final PurchaseManager purchaseManager;
-    private final ReceiptStorage receiptStorage;
+    private final FinancialManager financialManager;
     private final PricingStrategy pricingStrategy;
+    private final ExpiryDiscountStrategy expiryDiscountStrategy;
 
-    private final Map<StockItem, Integer> cart = new HashMap<>();
-    ReceiptStorage storage = new FileReceiptStorage();
+    private final ReceiptStorage receiptStorage;
+    private final PurchaseManager purchaseManager;
 
-    public Store(InventoryManager inventoryManager, EmployeeManager employeeManager, PurchaseManager purchaseManager, ReceiptStorage receiptStorage, PricingStrategy pricingStrategy, String storeName, BigDecimal expiryDiscountPercent, int daysBeforeExpirationThreshold){
+
+
+    public Store(String storeName,
+                 InventoryManager inventoryManager,
+                 EmployeeManager employeeManager,
+                 FinancialManager financialManager,
+                 PricingStrategy pricingStrategy,
+                 ExpiryDiscountStrategy expiryDiscountStrategy,
+                 ReceiptStorage receiptStorage,
+                 PurchaseManager purchaseManager
+                 ){
         this.id = UUID.randomUUID().toString();
+        this.storeName = storeName;
 
-        //New code
         this.inventoryManager = inventoryManager;
         this.employeeManager = employeeManager;
-        this.purchaseManager = purchaseManager;
-        this.receiptStorage = receiptStorage;
+        this.financialManager = financialManager;
         this.pricingStrategy = pricingStrategy;
-        //New code
-
-        this.storeName = storeName;
+        this.expiryDiscountStrategy = expiryDiscountStrategy;
+        this.receiptStorage = receiptStorage;
+        this.purchaseManager = purchaseManager;
     }
 
     public String getId(){
@@ -49,8 +60,6 @@ public class Store {
         return storeName;
     }
 
-
-
     public void setStoreName(String NewStoreName){
         storeName = NewStoreName;
     }
@@ -59,10 +68,7 @@ public class Store {
 //        daysBeforeExpirationThreshold = newThreshold;
 //    }
 
-    public void addToCart(StockItem item, int quantity){
-        int current = cart.getOrDefault(item, 0);
-        cart.put(item, current+quantity);
-    }
+
 
 
 
