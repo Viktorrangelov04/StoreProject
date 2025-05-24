@@ -6,12 +6,12 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public class FinancialManager {
-    private BigDecimal storeRevenue = BigDecimal.ZERO;
-    private BigDecimal totalDeliveryCost = BigDecimal.ZERO;
+    private BigDecimal storeRevenue;
+    private BigDecimal totalDeliveryCost;
 
-    public FinancialManager(BigDecimal storeRevenue, BigDecimal totalDeliveryCost){
-        this.storeRevenue = storeRevenue;
-        this.totalDeliveryCost = totalDeliveryCost;
+    public FinancialManager() {
+        this.storeRevenue = BigDecimal.ZERO;
+        this.totalDeliveryCost = BigDecimal.ZERO;
     }
 
     public BigDecimal getStoreRevenue() {

@@ -1,6 +1,5 @@
-package product;
+package exceptions;
 
-import exceptions.InsufficientStockException;
 import domain.product.Product;
 import domain.product.StockItem;
 import org.junit.jupiter.api.Test;

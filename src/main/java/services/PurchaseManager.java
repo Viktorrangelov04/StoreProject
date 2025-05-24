@@ -1,6 +1,7 @@
 package services;
 
 import exceptions.InsufficientStockException;
+import exceptions.InsufficientFundsException;
 import domain.product.Product;
 import domain.product.StockItem;
 import domain.receipt.Receipt;
@@ -34,60 +35,99 @@ public class PurchaseManager {
         this.expiryDiscountStrategy = expiryDiscountStrategy;
     }
 
-    public void addToCart(StockItem item, int quantity){
+    public void addToCart(StockItem item, int quantity) {
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("Quantity must be positive");
+        }
         int current = cart.getOrDefault(item, 0);
-        cart.put(item, current+quantity);
+        cart.put(item, current + quantity);
     }
-    public void processPurchase(Scanner scanner, BigDecimal clientMoney, Cashier cashier) throws InsufficientStockException, IOException {
-        Map<StockItem, Integer> cart = new HashMap<>();
-        int cartQuantity = 0;
-        BigDecimal totalCost = BigDecimal.ZERO;
 
+    public void clearCart() {
+        cart.clear();
+    }
+
+    public Map<StockItem, Integer> getCart() {
+        return new HashMap<>(cart); // Return copy for safety
+    }
+
+    public void processPurchase(Scanner scanner, BigDecimal clientMoney, Cashier cashier)
+            throws InsufficientStockException, InsufficientFundsException, IOException {
+        clearCart();
+        buildCart(scanner);
+        BigDecimal totalCost = validateAndCalculateTotal();
+        validatePayment(clientMoney, totalCost);
+        completeSale(cashier, totalCost);
+
+        System.out.println("Purchase completed successfully!");
+        System.out.println("Change: " + clientMoney.subtract(totalCost).setScale(2, RoundingMode.HALF_UP) + " BGN");
+    }
+
+    private void buildCart(Scanner scanner) throws InsufficientStockException {
         while (true) {
-            System.out.print("Insert product name (or 'done'): ");
+            System.out.print("Insert product name (or 'done' to finish): ");
             String input = scanner.nextLine().trim();
 
-            if (input.equalsIgnoreCase("done")) break;
+            if (input.equalsIgnoreCase("done")) {
+                break;
+            }
 
             Product product = inventoryManager.findProductByName(input);
             if (product == null) {
-                System.out.println("Product isn't found");
+                System.out.println("Product not found. Please try again.");
                 continue;
             }
 
-            System.out.print("Quantity: ");
-            int quantity;
-            try {
-                quantity = Integer.parseInt(scanner.nextLine());
-                if (quantity <= 0) {
-                    System.out.println("Please enter a positive number.");
-                    continue;
-                }
-            } catch (NumberFormatException e) {
-                System.out.println("Invalid quantity.");
+            int quantity = getQuantityFromUser(scanner);
+            if (quantity <= 0) {
                 continue;
             }
 
-            List<StockItem> stockItems = inventoryManager.getStockForProduct(product);
-            if (stockItems == null || stockItems.isEmpty()) {
-                System.out.println("Product is out of stock");
-                continue;
-            }
-
-            int totalAvailable = stockItems.stream()
-                    .filter(item -> item.getQuantity() > 0 && !item.isExpired())
-                    .mapToInt(StockItem::getQuantity)
-                    .sum();
-
-            if (totalAvailable < quantity) {
-                throw new InsufficientStockException(stockItems.get(0), quantity, totalAvailable);
-            }
-
-            StockItem item = inventoryManager.getFirstAvailableStockItem(product);
-            if (item != null) {
-                cart.put(item, cart.getOrDefault(item, 0) + quantity);
-            }
+            addProductToCart(product, quantity);
         }
+    }
+
+    private int getQuantityFromUser(Scanner scanner) {
+        System.out.print("Quantity: ");
+        try {
+            int quantity = Integer.parseInt(scanner.nextLine().trim());
+            if (quantity <= 0) {
+                System.out.println("Please enter a positive number.");
+                return -1;
+            }
+            return quantity;
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid quantity. Please enter a valid number.");
+            return -1;
+        }
+    }
+
+    private void addProductToCart(Product product, int quantity) throws InsufficientStockException {
+        List<StockItem> stockItems = inventoryManager.getStockForProduct(product);
+
+        if (stockItems == null || stockItems.isEmpty()) {
+            System.out.println("Product is out of stock");
+            return;
+        }
+
+        int totalAvailable = stockItems.stream()
+                .filter(item -> item.getQuantity() > 0 && !item.isExpired())
+                .mapToInt(StockItem::getQuantity)
+                .sum();
+
+        if (totalAvailable < quantity) {
+            throw new InsufficientStockException(stockItems.get(0), quantity, totalAvailable);
+        }
+
+        StockItem item = inventoryManager.getFirstAvailableStockItem(product);
+        if (item != null) {
+            addToCart(item, quantity);
+            System.out.println("Added " + quantity + " x " + product.getName() + " to cart");
+        }
+    }
+
+    private BigDecimal validateAndCalculateTotal() throws InsufficientStockException {
+        BigDecimal totalCost = BigDecimal.ZERO;
 
         for (Map.Entry<StockItem, Integer> entry : cart.entrySet()) {
             StockItem item = entry.getKey();
@@ -98,35 +138,43 @@ public class PurchaseManager {
             }
 
             if (item.isExpired()) {
-                System.out.println("Product \"" + item.getProduct().getName() + "\" is expired");
+                System.out.println("Warning: Product \"" + item.getProduct().getName() + "\" is expired and will be removed from cart");
                 continue;
             }
 
             expiryDiscountStrategy.applyDiscountIfNeeded(item);
 
-            totalCost = totalCost.add(item.getSellingPrice().multiply(BigDecimal.valueOf(quantity)));
+            BigDecimal itemCost = item.getSellingPrice().multiply(BigDecimal.valueOf(quantity));
+            totalCost = totalCost.add(itemCost);
         }
 
         System.out.println("Total cost: " + totalCost.setScale(2, RoundingMode.HALF_UP) + " BGN");
+        return totalCost;
+    }
 
+    private void validatePayment(BigDecimal clientMoney, BigDecimal totalCost) throws InsufficientFundsException {
         if (clientMoney.compareTo(totalCost) < 0) {
-            BigDecimal need = totalCost.subtract(clientMoney);
-            System.out.println("You don't have enough money. You need: " + need + " BGN more");
-            return;
+            BigDecimal needed = totalCost.subtract(clientMoney);
+            throw new InsufficientFundsException(totalCost, clientMoney);
         }
+    }
 
+    private void completeSale(Cashier cashier, BigDecimal totalCost) throws IOException {
         financialManager.addRevenue(totalCost);
 
         for (Map.Entry<StockItem, Integer> entry : cart.entrySet()) {
             StockItem item = entry.getKey();
             int quantity = entry.getValue();
-            item.setQuantity(item.getQuantity() - quantity);
-            cartQuantity++;
+
+            if (!item.isExpired()) {
+                item.setQuantity(item.getQuantity() - quantity);
+            }
         }
 
         int serialNumber = receiptStorage.getNextReceiptNumber();
-        Receipt receipt = new Receipt(serialNumber, cashier, cart, cartQuantity, totalCost);
+        Receipt receipt = new Receipt(serialNumber, cashier, new HashMap<>(cart), cart.size(), totalCost);
         receiptStorage.saveReceipt(receipt);
-    }
 
+        clearCart();
+    }
 }

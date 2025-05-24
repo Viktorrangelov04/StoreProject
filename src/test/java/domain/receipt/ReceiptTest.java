@@ -1,7 +1,6 @@
-package store;
+package domain.receipt;
 
 import domain.store.Cashier;
-import domain.receipt.Receipt;
 import domain.product.Category;
 import domain.product.Product;
 import domain.product.StockItem;

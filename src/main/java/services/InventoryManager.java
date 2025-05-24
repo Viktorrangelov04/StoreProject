@@ -45,10 +45,4 @@ public class InventoryManager {
         }
         return null;
     }
-
-//    public boolean hasEnoughStock(Product product, int quantity) {
-//        StockItem stockItem = getFirstAvailableStockItem(product);
-//        if (stockItem == null) return false;
-//        return stockItem.getQuantity() >= quantity;
-//    }
 }

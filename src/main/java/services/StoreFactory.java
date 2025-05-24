@@ -13,17 +13,19 @@ import java.util.Map;
 
 public class StoreFactory {
 
-    public static Store createDefaultStore(String storeName) {
+    public static Store createStore(String storeName, BigDecimal FoodMarkup,
+                                           BigDecimal NonFoodMarkup, BigDecimal expiryDiscount,
+                                           int expiryThreshold) {
         Map<Category, BigDecimal> markupMap = Map.of(
-                Category.Food, new BigDecimal("20"),
-                Category.NonFood, new BigDecimal("30")
+                Category.Food, FoodMarkup,
+                Category.NonFood, NonFoodMarkup
         );
 
         PricingStrategy pricingStrategy = new MarkupStrategy(markupMap);
-        ExpiryDiscountStrategy expiryDiscountStrategy = new ExpiryDiscountStrategy(new BigDecimal("15"), 7);
+        ExpiryDiscountStrategy expiryDiscountStrategy = new ExpiryDiscountStrategy(expiryDiscount, expiryThreshold);
         InventoryManager inventoryManager = new InventoryManager();
         EmployeeManager employeeManager = new EmployeeManager();
-        FinancialManager financialManager = new FinancialManager(BigDecimal.ZERO, BigDecimal.ZERO);
+        FinancialManager financialManager = new FinancialManager();
         ReceiptStorage receiptStorage = new FileReceiptStorage();
         PurchaseManager purchaseManager = new PurchaseManager(inventoryManager, receiptStorage, financialManager, expiryDiscountStrategy);
         return new Store(
@@ -35,6 +37,15 @@ public class StoreFactory {
                 expiryDiscountStrategy,
                 receiptStorage,
                 purchaseManager
+        );
+    }
+    public static Store createDefaultStore(String storeName) {
+        return createStore(
+                storeName,
+                new BigDecimal("20"),
+                new BigDecimal("30"),
+                new BigDecimal("15"),
+                7
         );
     }
 }

@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ca1a20-c2a8-400c-aad1-5e2be4be4c6c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/app/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/exceptions/InsufficientFundsException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/domain/store/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/store/Store.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pricing/ExpiryDiscountStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pricing/ExpiryDiscountStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/FinancialManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/FinancialManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/InventoryManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/InventoryManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/PurchaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/PurchaseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/StoreFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/StoreFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/product/StockItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/product/StockItemTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +52,7 @@
         <option value="JUnit5 Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="Exception" />
       </list>
     </option>
   </component>
@@ -80,46 +84,47 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.StockItem.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ProductTest.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ProductTest.getId.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ProductTest.getName.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.ProjectStore [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.StockItemTest.isCloseToExpiry.executor&quot;: &quot;Profiler#1&quot;,
-    &quot;JUnit.CashRegisterTest.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.ProductTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReceiptTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReceiptTest.formatReceipt.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReceiptTest.getProducts.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ReceiptTest.getTimestamp.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.StockItemTest.equals_ShouldReturnTrue_ForSameValues.executor&quot;: &quot;Debug&quot;,
-    &quot;JUnit.StockItemTest.getProduct.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Test.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Projects/ProjectStore&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.StockItem.executor": "Run",
+    "Application.Unnamed.executor": "Run",
+    "Gradle.ProductTest.executor": "Run",
+    "Gradle.ProductTest.getId.executor": "Run",
+    "Gradle.ProductTest.getName.executor": "Run",
+    "Gradle.ProjectStore [:org.example.Main.main()].executor": "Run",
+    "Gradle.StockItemTest.isCloseToExpiry.executor": "Profiler#1",
+    "JUnit.CashRegisterTest.executor": "Coverage",
+    "JUnit.ProductTest.executor": "Run",
+    "JUnit.ReceiptTest.executor": "Run",
+    "JUnit.ReceiptTest.formatReceipt.executor": "Run",
+    "JUnit.ReceiptTest.getProducts.executor": "Run",
+    "JUnit.ReceiptTest.getTimestamp.executor": "Run",
+    "JUnit.StockItemTest.equals_ShouldReturnTrue_ForSameValues.executor": "Debug",
+    "JUnit.StockItemTest.getProduct.executor": "Run",
+    "JUnit.StockItemTest.getSellingPrice.executor": "Run",
+    "JUnit.Test.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/Projects/ProjectStore",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -129,7 +134,23 @@
       <recent name="Store" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.StockItemTest.getSellingPrice">
+    <configuration name="StockItemTest.getSellingPrice" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProjectStore.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="product.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="product" />
+      <option name="MAIN_CLASS_NAME" value="product.StockItemTest" />
+      <option name="METHOD_NAME" value="getSellingPrice" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="JUnit" factoryName="JUnit">
       <module name="ProjectStore.test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -142,6 +163,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.StockItemTest.getSellingPrice" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -182,7 +208,7 @@
       <workItem from="1747926737138" duration="2067000" />
       <workItem from="1747930279935" duration="366000" />
       <workItem from="1748020006302" duration="14629000" />
-      <workItem from="1748083363971" duration="14347000" />
+      <workItem from="1748083363971" duration="24558000" />
     </task>
     <servers />
   </component>

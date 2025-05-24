@@ -1,4 +1,4 @@
-package store;
+package storage;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package product;
+package domain.product;
 
 import domain.product.Product;
 import org.junit.jupiter.api.Test;
