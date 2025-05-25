@@ -9,7 +9,6 @@ import domain.store.Cashier;
 import pricing.ExpiryDiscountStrategy;
 import storage.ReceiptStorage;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.HashMap;
@@ -52,7 +51,7 @@ public class PurchaseManager {
     }
 
     public void processPurchase(Scanner scanner, BigDecimal clientMoney, Cashier cashier)
-            throws InsufficientStockException, InsufficientFundsException, IOException {
+            throws InsufficientStockException, InsufficientFundsException {
         clearCart();
         buildCart(scanner);
         BigDecimal totalCost = validateAndCalculateTotal();
@@ -116,7 +115,7 @@ public class PurchaseManager {
                 .sum();
 
         if (totalAvailable < quantity) {
-            throw new InsufficientStockException(stockItems.get(0), quantity, totalAvailable);
+            throw new InsufficientStockException(stockItems.getFirst(), quantity, totalAvailable);
         }
 
         StockItem item = inventoryManager.getFirstAvailableStockItem(product);
@@ -154,12 +153,11 @@ public class PurchaseManager {
 
     private void validatePayment(BigDecimal clientMoney, BigDecimal totalCost) throws InsufficientFundsException {
         if (clientMoney.compareTo(totalCost) < 0) {
-            BigDecimal needed = totalCost.subtract(clientMoney);
             throw new InsufficientFundsException(totalCost, clientMoney);
         }
     }
 
-    private void completeSale(Cashier cashier, BigDecimal totalCost) throws IOException {
+    private void completeSale(Cashier cashier, BigDecimal totalCost){
         financialManager.addRevenue(totalCost);
 
         for (Map.Entry<StockItem, Integer> entry : cart.entrySet()) {

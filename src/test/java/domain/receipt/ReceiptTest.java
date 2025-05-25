@@ -31,6 +31,7 @@ class ReceiptTest {
         LocalDateTime fixedTime = LocalDateTime.of(2025, 5, 22, 0, 0);
         return new Receipt(serial, cashier, cart, quantity, price,fixedTime);
     }
+
     @Test
     void getSerialNumber() {
         //Arrange
@@ -43,10 +44,8 @@ class ReceiptTest {
     void getCashier() {
         //Arrange
         Receipt receipt = makeDefaultReceipt();
-        //Act
-        Cashier Cashier = receipt.getCashier();
         //Assert
-        assertEquals(Cashier, receipt.getCashier());//TODO: overwrite equals in cashier
+        assertEquals("Viktor", receipt.getCashier());
     }
 
     @Test
@@ -123,7 +122,6 @@ class ReceiptTest {
         assertTrue(Files.exists(filePath));
 
         String content = Files.readString(filePath);
-        String expected = "Касова бележка №1";
         assertTrue(content.contains("Касова бележка"));
         assertTrue(content.contains("Viktor"));
         assertTrue(content.contains("banana"));

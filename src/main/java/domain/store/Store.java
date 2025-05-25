@@ -12,7 +12,6 @@ import services.EmployeeManager;
 import services.FinancialManager;
 import services.InventoryManager;
 import services.PurchaseManager;
-import storage.FileReceiptStorage;
 import storage.ReceiptStorage;
 
 import java.io.IOException;

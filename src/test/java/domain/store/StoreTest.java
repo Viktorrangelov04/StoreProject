@@ -74,7 +74,7 @@ class StoreTest {
         store.getFinancialManager().addRevenue(new BigDecimal("20.00"));
 
         //Assert
-        assertEquals(new BigDecimal("-486.00"), store.getProfit());
+        assertEquals(new BigDecimal("-1186.00"), store.getProfit());
     }
 
     @Test

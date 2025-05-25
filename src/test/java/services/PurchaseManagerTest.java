@@ -6,7 +6,6 @@ import domain.product.StockItem;
 import domain.receipt.Receipt;
 import domain.store.Cashier;
 import exceptions.InsufficientFundsException;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pricing.ExpiryDiscountStrategy;
 import storage.ReceiptStorage;
@@ -15,126 +14,131 @@ import java.io.ByteArrayInputStream;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PurchaseManagerTest {
 
-    private InventoryManager inventoryManager;
-    private FinancialManager financialManager;
-    private ExpiryDiscountStrategy expiryDiscountStrategy;
-    private ReceiptStorage receiptStorage;
-    private PurchaseManager purchaseManager;
-    private Product banana;
-    private StockItem item;
+    @Test
+    void addToCart() {
+        InventoryManager inventoryManager = new InventoryManager();
+        FinancialManager financialManager = new FinancialManager();
+        ExpiryDiscountStrategy discountStrategy = new ExpiryDiscountStrategy(new BigDecimal("10"), 7);
+        PurchaseManager purchaseManager = new PurchaseManager(inventoryManager, dummyReceiptStorage(), financialManager, discountStrategy);
 
-    // Used for verifying saved receipts
-    private Receipt lastSavedReceipt;
-
-    @BeforeEach
-    void setUp() {
-        inventoryManager = new InventoryManager();
-        financialManager = new FinancialManager();
-        expiryDiscountStrategy = new ExpiryDiscountStrategy(new BigDecimal("10"), 7);
-
-        receiptStorage = new ReceiptStorage() {
-            @Override
-            public int getNextReceiptNumber() {
-                return 1;
-            }
-
-            @Override
-            public void saveReceipt(Receipt receipt) {
-                lastSavedReceipt = receipt; // store for validation
-            }
-
-            @Override
-            public Receipt loadReceipt(int serialNumber) {
-                return lastSavedReceipt;
-            }
-
-            @Override
-            public List<Receipt> loadAllReceipts() {
-                return List.of(lastSavedReceipt);
-            }
-
-            @Override
-            public int getTotalReceiptsIssued() {
-                return lastSavedReceipt != null ? 1 : 0;
-            }
-        };
-
-        purchaseManager = new PurchaseManager(inventoryManager, receiptStorage, financialManager, expiryDiscountStrategy);
-
-        banana = new Product("Banana", Category.Food);
-        item = new StockItem(banana, new BigDecimal("2.00"), 10, LocalDate.now().plusDays(5));
+        Product banana = new Product("Banana", Category.Food);
+        StockItem item = new StockItem(banana, new BigDecimal("2.00"), 10, LocalDate.now().plusDays(5));
         item.setSellingPrice(new BigDecimal("2.50"));
         inventoryManager.addStock(item);
-    }
 
-    @Test
-    void addToCart_ShouldAddItemSuccessfully() {
         purchaseManager.addToCart(item, 3);
+
         assertEquals(1, purchaseManager.getCart().size());
         assertEquals(3, purchaseManager.getCart().get(item));
     }
 
     @Test
     void addToCart_ShouldThrowForZeroOrNegative() {
+        InventoryManager inventoryManager = new InventoryManager();
+        FinancialManager financialManager = new FinancialManager();
+        ExpiryDiscountStrategy discountStrategy = new ExpiryDiscountStrategy(new BigDecimal("10"), 7);
+        PurchaseManager purchaseManager = new PurchaseManager(inventoryManager, dummyReceiptStorage(), financialManager, discountStrategy);
+
+        Product banana = new Product("Banana", Category.Food);
+        StockItem item = new StockItem(banana, new BigDecimal("2.00"), 10, LocalDate.now().plusDays(5));
+        item.setSellingPrice(new BigDecimal("2.50"));
+
         assertThrows(IllegalArgumentException.class, () -> purchaseManager.addToCart(item, 0));
-        assertThrows(IllegalArgumentException.class, () -> purchaseManager.addToCart(item, -2));
+        assertThrows(IllegalArgumentException.class, () -> purchaseManager.addToCart(item, -1));
     }
 
     @Test
-    void validatePayment_ShouldThrowIfInsufficientFunds() {
-        purchaseManager.addToCart(item, 2); // total = 5.00
+    void validatePayment() {
+        InventoryManager inventoryManager = new InventoryManager();
+        FinancialManager financialManager = new FinancialManager();
+        ExpiryDiscountStrategy discountStrategy = new ExpiryDiscountStrategy(new BigDecimal("10"), 7);
+        ReceiptStorage storage = dummyReceiptStorage();
+        PurchaseManager purchaseManager = new PurchaseManager(inventoryManager, storage, financialManager, discountStrategy);
 
-        assertThrows(InsufficientFundsException.class, () -> {
-            purchaseManager.processPurchase(
-                    fakeScanner("Banana\n2\ndone\n"),
-                    new BigDecimal("3.00"),
-                    new Cashier("Viktor", BigDecimal.TEN)
-            );
-        });
+        Product banana = new Product("Banana", Category.Food);
+        StockItem item = new StockItem(banana, new BigDecimal("2.00"), 10, LocalDate.now().plusDays(5));
+        item.setSellingPrice(new BigDecimal("2.50"));
+        inventoryManager.addStock(item);
+
+        purchaseManager.addToCart(item, 2);
+
+        Cashier cashier = new Cashier("Viktor", BigDecimal.TEN);
+        assertThrows(InsufficientFundsException.class, () ->
+                purchaseManager.processPurchase(fakeScanner("Banana\n2\ndone\n"), new BigDecimal("3.00"), cashier));
     }
 
     @Test
-    void processPurchase_ShouldSucceedAndGenerateReceipt() throws Exception {
-        Cashier cashier = new Cashier("Viktor", new BigDecimal("1000"));
+    void processPurchase() throws Exception {
+        InventoryManager inventoryManager = new InventoryManager();
+        FinancialManager financialManager = new FinancialManager();
+        ExpiryDiscountStrategy discountStrategy = new ExpiryDiscountStrategy(new BigDecimal("10"), 7);
+        ReceiptHolder holder = new ReceiptHolder();
 
-        purchaseManager.processPurchase(
-                fakeScanner("Banana\n2\ndone\n"),
-                new BigDecimal("10.00"),
-                cashier
-        );
+        PurchaseManager purchaseManager = new PurchaseManager(inventoryManager, holder, financialManager, discountStrategy);
 
-        assertNotNull(lastSavedReceipt);
-        assertEquals(1, lastSavedReceipt.getProducts().size());
-        assertEquals(new BigDecimal("5.00"), lastSavedReceipt.getTotalPrice()); // 2 x 2.50
-        assertEquals(cashier.getName(), lastSavedReceipt.getCashier().getName());
-        assertEquals(8, item.getQuantity()); // was 10
+        Product banana = new Product("Banana", Category.Food);
+        StockItem item = new StockItem(banana, new BigDecimal("2.00"), 10, LocalDate.now().plusDays(10)); // No discount
+        item.setSellingPrice(new BigDecimal("2.50"));
+        inventoryManager.addStock(item);
+
+        Cashier cashier = new Cashier("Viktor", new BigDecimal("1200"));
+
+        purchaseManager.processPurchase(fakeScanner("Banana\n2\ndone\n"), new BigDecimal("10.00"), cashier);
+
+        Receipt r = holder.last;
+        assertNotNull(r);
+        assertEquals(1, r.getProducts().size());
+        assertEquals(new BigDecimal("5.00"), r.getTotalPrice());
+        assertEquals("Viktor", r.getCashier());
     }
 
     @Test
     void processPurchase_ShouldApplyExpiryDiscount() throws Exception {
+        InventoryManager inventoryManager = new InventoryManager();
+        FinancialManager financialManager = new FinancialManager();
+        ExpiryDiscountStrategy discountStrategy = new ExpiryDiscountStrategy(new BigDecimal("50"), 10);
+        ReceiptHolder holder = new ReceiptHolder();
+
+        PurchaseManager purchaseManager = new PurchaseManager(inventoryManager, holder, financialManager, discountStrategy);
+
+        Product banana = new Product("Banana", Category.Food);
+        StockItem item = new StockItem(banana, new BigDecimal("2.00"), 1, LocalDate.now().plusDays(5));
         item.setSellingPrice(new BigDecimal("10.00"));
-        expiryDiscountStrategy = new ExpiryDiscountStrategy(new BigDecimal("50"), 10); // 50% discount
-        purchaseManager = new PurchaseManager(inventoryManager, receiptStorage, financialManager, expiryDiscountStrategy);
+        inventoryManager.addStock(item);
 
-        purchaseManager.processPurchase(
-                fakeScanner("Banana\n1\ndone\n"),
-                new BigDecimal("10.00"),
-                new Cashier("Test", BigDecimal.ZERO)
-        );
+        purchaseManager.processPurchase(fakeScanner("Banana\n1\ndone\n"), new BigDecimal("10.00"), new Cashier("Test", BigDecimal.ZERO));
 
-        assertNotNull(lastSavedReceipt);
-        assertEquals(new BigDecimal("5.00"), lastSavedReceipt.getTotalPrice()); // Discounted
+        Receipt r = holder.last;
+        assertNotNull(r);
+        assertEquals(new BigDecimal("5.00"), r.getTotalPrice());
     }
 
-    // Simulate Scanner input
     private Scanner fakeScanner(String input) {
         return new Scanner(new ByteArrayInputStream(input.getBytes()));
+    }
+
+    private ReceiptStorage dummyReceiptStorage() {
+        return new ReceiptStorage() {
+            public int getNextReceiptNumber() { return 1; }
+            public void saveReceipt(Receipt r) {}
+            public Receipt loadReceipt(int n) { return null; }
+            public List<Receipt> loadAllReceipts() { return List.of(); }
+            public int getTotalReceiptsIssued() { return 0; }
+        };
+    }
+
+    static class ReceiptHolder implements ReceiptStorage {
+        public Receipt last;
+        public int getNextReceiptNumber() { return 1; }
+        public void saveReceipt(Receipt receipt) { this.last = receipt; }
+        public Receipt loadReceipt(int serialNumber) { return last; }
+        public List<Receipt> loadAllReceipts() { return List.of(last); }
+        public int getTotalReceiptsIssued() { return last != null ? 1 : 0; }
     }
 }

@@ -1,10 +1,7 @@
 package domain.product;
 
 import domain.store.Store;
-import domain.product.Product;
-import domain.product.StockItem;
 import org.junit.jupiter.api.Test;
-import domain.product.Category;
 import services.InventoryManager;
 import services.StoreFactory;
 
@@ -56,7 +53,7 @@ public class StockItemTest {
 
         // Assert
         BigDecimal expected = new BigDecimal("20")
-                .multiply(BigDecimal.ONE.add(new BigDecimal("20").divide(new BigDecimal("100"))))
+                .multiply(new BigDecimal("1.2"))
                 .setScale(2, RoundingMode.HALF_UP);
 
         assertEquals(expected, item.getSellingPrice());
@@ -191,53 +188,53 @@ public class StockItemTest {
         assertFalse(item.isCloseToExpiry(7));
     }
 
-    private StockItem createItem(String name, int quantity) {
-        Product p = new Product(name, Category.Food);
+    private StockItem createItem(int quantity) {
+        Product p = new Product("Banana", Category.Food);
         return new StockItem(p, new BigDecimal("10.00"), quantity, LocalDate.now().plusDays(5));
     }
 
     @Test
     void equals_ShouldReturnTrue_ForSameObject() {
-        StockItem item = createItem("Banana", 5);
+        StockItem item = createItem(5);
         assertEquals(item, item);
     }
 
     @Test
     void equals_ShouldReturnTrue_ForSameValues() {
-        StockItem a = createItem("Banana", 5);
-        StockItem b = createItem("Banana", 5);
+        StockItem a = createItem(5);
+        StockItem b = createItem(5);
         assertEquals(a, b);
     }
 
     @Test
     void equals_ShouldReturnFalse_ForDifferentQuantity() {
-        StockItem a = createItem("Banana", 5);
-        StockItem b = createItem("Banana", 6);
+        StockItem a = createItem(5);
+        StockItem b = createItem(6);
         assertNotEquals(a, b);
     }
 
     @Test
     void equals_ShouldReturnFalse_ForNull() {
-        StockItem a = createItem("Banana", 5);
+        StockItem a = createItem(5);
         assertNotEquals(null, a);
     }
 
     @Test
     void equals_ShouldReturnFalse_ForDifferentType() {
-        StockItem a = createItem("Banana", 5);
+        StockItem a = createItem(5);
         assertNotEquals("not a stock item", a);
     }
 
     @Test
     void hashCode_ShouldBeEqual_ForEqualObjects() {
-        StockItem a = createItem("Banana", 5);
-        StockItem b = createItem("Banana", 5);
+        StockItem a = createItem(5);
+        StockItem b = createItem(5);
         assertEquals(a.hashCode(), b.hashCode());
     }
 
     @Test
     void hashCode_ShouldBeConsistent() {
-        StockItem a = createItem("Banana", 5);
+        StockItem a = createItem(5);
         int hash1 = a.hashCode();
         int hash2 = a.hashCode();
         assertEquals(hash1, hash2);

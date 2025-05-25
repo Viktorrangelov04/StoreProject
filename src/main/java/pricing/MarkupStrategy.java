@@ -33,10 +33,16 @@ public class MarkupStrategy implements PricingStrategy {
     }
 
     @Override
-    public BigDecimal calculateSellingPrice(BigDecimal deliveryPrice, Category category) {
-        BigDecimal markup = markupPercentages.getOrDefault(category, BigDecimal.ZERO);
-        BigDecimal markupRate = markup.divide(new BigDecimal("100"));
-        return deliveryPrice.multiply(BigDecimal.ONE.add(markupRate))
+    public BigDecimal calculateSellingPrice(
+            BigDecimal deliveryPrice,
+            Category category
+    ) {
+        BigDecimal markupRate = markupPercentages
+                .getOrDefault(category, BigDecimal.ZERO)
+                .movePointLeft(2);
+
+        return deliveryPrice
+                .multiply(BigDecimal.ONE.add(markupRate))
                 .setScale(2, RoundingMode.HALF_UP);
     }
 }

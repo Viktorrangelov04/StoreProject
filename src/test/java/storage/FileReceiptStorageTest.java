@@ -6,7 +6,6 @@ import domain.product.StockItem;
 import domain.receipt.Receipt;
 import domain.store.Cashier;
 import org.junit.jupiter.api.*;
-import storage.FileReceiptStorage;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -41,7 +40,7 @@ class FileReceiptStorageTest {
     }
 
     @Test
-    void saveAndLoadReceipt_ShouldPersistAndRetrieveCorrectly() throws IOException, ClassNotFoundException {
+    void saveAndLoadReceipt_ShouldPersistAndRetrieveCorrectly() {
         // Arrange
         int serial = storage.getNextReceiptNumber();
         Cashier cashier = new Cashier("Viktor", new BigDecimal("1200"));
@@ -59,13 +58,13 @@ class FileReceiptStorageTest {
         // Assert
         assertNotNull(loaded);
         assertEquals(serial, loaded.getSerialNumber());
-        assertEquals("Viktor", loaded.getCashier().getName());
+        assertEquals("Viktor", loaded.getCashier());
         assertEquals(new BigDecimal("6.00"), loaded.getTotalPrice());
         assertEquals(2, loaded.getItemQuantity());
     }
 
     @Test
-    void loadAllReceipts_ShouldReturnAllStoredReceipts() throws IOException, ClassNotFoundException {
+    void loadAllReceipts_ShouldReturnAllStoredReceipts(){
         int serial1 = storage.getNextReceiptNumber();
         int serial2 = storage.getNextReceiptNumber();
         Cashier cashier = new Cashier("Mira", new BigDecimal("1000"));
@@ -91,7 +90,6 @@ class FileReceiptStorageTest {
         assertEquals(before + 1, after);
     }
 
-    // 🧹 Helper to delete receipts/cleanup
     private void clearReceipts() throws IOException {
         Path folder = Paths.get("receipts");
         if (Files.exists(folder)) {

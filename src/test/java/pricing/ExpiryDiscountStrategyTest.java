@@ -43,14 +43,14 @@ class ExpiryDiscountStrategyTest {
 
         // Assert
         BigDecimal expected = new BigDecimal("24.00")
-                .multiply(BigDecimal.ONE.subtract(new BigDecimal("15").divide(new BigDecimal("100"))))
+                .multiply(new BigDecimal("0.85"))
                 .setScale(2, RoundingMode.HALF_UP);
 
         assertEquals(expected, item.getSellingPrice());
     }
 
     @Test
-    void applyDiscount_ShouldntApply_IfNotNeeded(){
+    void applyDiscount_ShouldNotApply_IfNotNeeded(){
         //Arrange
         StockItem item = new StockItem(new Product("Apple", Category.Food),
                 new BigDecimal("20"), 2, LocalDate.now().plusDays(10));

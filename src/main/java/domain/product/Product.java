@@ -1,10 +1,15 @@
 package domain.product;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
 
-public class Product {
+public class Product implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private final String id;
     private String name;
     private final Category category;
@@ -35,8 +40,7 @@ public class Product {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Product)) return false;
-        Product that = (Product) o;
+        if (!(o instanceof Product that)) return false;
         return name.equals(that.name) && category == that.category;
     }
 

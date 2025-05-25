@@ -1,12 +1,17 @@
 package domain.product;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
-public class StockItem {
+public class StockItem implements Serializable {
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private final Product product;
     private BigDecimal deliveryPrice;
     private BigDecimal sellingPrice;

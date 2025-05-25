@@ -26,11 +26,15 @@ public class ExpiryDiscountStrategy {
     }
 
     public void applyDiscountIfNeeded(StockItem item) {
-        if (item.isCloseToExpiry(daysBeforeExpiryThreshold) && !item.isExpired()) {
-            BigDecimal discountRate = discountPercent.divide(BigDecimal.valueOf(100));
-            BigDecimal discountedPrice = item.getSellingPrice()
-                    .multiply(BigDecimal.ONE.subtract(discountRate))
-                    .setScale(2, RoundingMode.HALF_UP);
+        if (item.isCloseToExpiry(daysBeforeExpiryThreshold)
+                && !item.isExpired()) {
+            BigDecimal discountRate = discountPercent.movePointLeft(2);
+
+            BigDecimal discountedPrice =
+                    item.getSellingPrice()
+                            .multiply(BigDecimal.ONE.subtract(discountRate))
+                            .setScale(2, RoundingMode.HALF_UP);
+
             item.setSellingPrice(discountedPrice);
         }
     }

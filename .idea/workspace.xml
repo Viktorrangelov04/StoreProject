@@ -5,9 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ca1a20-c2a8-400c-aad1-5e2be4be4c6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/domain/store/StoreTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/receipt_counter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_counter.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_1.ser" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_1.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/product/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/product/StockItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/product/StockItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/receipt/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/receipt/Receipt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/store/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/store/Store.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pricing/ExpiryDiscountStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pricing/ExpiryDiscountStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pricing/MarkupStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pricing/MarkupStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/PurchaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/PurchaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/product/ProductTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/product/ProductTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/product/StockItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/product/StockItemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/receipt/ReceiptTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/receipt/ReceiptTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/StoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/store/StoreTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pricing/ExpiryDiscountStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pricing/ExpiryDiscountStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/EmployeeManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/EmployeeManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/PurchaseManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/PurchaseManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/storage/FileReceiptStorageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/storage/FileReceiptStorageTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,6 +103,7 @@
     "Gradle.ProjectStore [:org.example.Main.main()].executor": "Run",
     "Gradle.StockItemTest.isCloseToExpiry.executor": "Profiler#1",
     "JUnit.CashRegisterTest.executor": "Coverage",
+    "JUnit.ExpiryDiscountStrategyTest.applyDiscountIfNeeded.executor": "Run",
     "JUnit.ExpiryDiscountStrategyTest.executor": "Run",
     "JUnit.FileReceiptStorageTest.executor": "Run",
     "JUnit.FinancialManagerTest.addDeliveryCost.executor": "Run",
@@ -96,6 +112,7 @@
     "JUnit.MarkupStrategyTest.getAllMarkups.executor": "Run",
     "JUnit.MarkupStrategyTest.getMarkup.executor": "Run",
     "JUnit.ProductTest.executor": "Run",
+    "JUnit.PurchaseManagerTest.executor": "Run",
     "JUnit.ReceiptTest.executor": "Run",
     "JUnit.ReceiptTest.formatReceipt.executor": "Run",
     "JUnit.ReceiptTest.getProducts.executor": "Run",
@@ -105,7 +122,7 @@
     "JUnit.StockItemTest.getProduct.executor": "Run",
     "JUnit.StockItemTest.getSellingPrice.executor": "Run",
     "JUnit.StoreTest.processPurchase.executor": "Run",
-    "JUnit.Test.executor": "Coverage",
+    "JUnit.Test.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -124,7 +141,7 @@
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -136,46 +153,14 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
-      <recent name="domain.store" />
       <recent name="services" />
+      <recent name="domain.store" />
       <recent name="pricing" />
       <recent name="exceptions" />
       <recent name="Products" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.StoreTest.processPurchase">
-    <configuration name="ReceiptTest.saveToTextFile_ShouldCreateFileWithExpectedContent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ProjectStore.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="domain.receipt.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="domain.receipt" />
-      <option name="MAIN_CLASS_NAME" value="domain.receipt.ReceiptTest" />
-      <option name="METHOD_NAME" value="saveToTextFile_ShouldCreateFileWithExpectedContent" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="StoreTest.processPurchase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ProjectStore.test" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="domain.store.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="domain.store" />
-      <option name="MAIN_CLASS_NAME" value="domain.store.StoreTest" />
-      <option name="METHOD_NAME" value="processPurchase" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="Test" type="JUnit" factoryName="JUnit">
       <module name="ProjectStore.test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -188,17 +173,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <list>
-      <item itemvalue="JUnit.Test" />
-      <item itemvalue="JUnit.StoreTest.processPurchase" />
-      <item itemvalue="JUnit.ReceiptTest.saveToTextFile_ShouldCreateFileWithExpectedContent" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JUnit.StoreTest.processPurchase" />
-        <item itemvalue="JUnit.ReceiptTest.saveToTextFile_ShouldCreateFileWithExpectedContent" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -240,7 +214,7 @@
       <workItem from="1747930279935" duration="366000" />
       <workItem from="1748020006302" duration="14629000" />
       <workItem from="1748083363971" duration="31903000" />
-      <workItem from="1748177110811" duration="4013000" />
+      <workItem from="1748177110811" duration="14722000" />
     </task>
     <servers />
   </component>
@@ -258,21 +232,13 @@
       </map>
     </option>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/pricing/ExpiryDiscountStrategyTest.java</url>
-          <line>13</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ProjectStore$Test.ic" NAME="Test Coverage Results" MODIFIED="1748125003859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/ProjectStore$Test.ic" NAME="Test Coverage Results" MODIFIED="1748205288491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/ProjectStore$CashRegisterTest.ic" NAME="CashRegisterTest Coverage Results" MODIFIED="1747849627323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>Store.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/ProjectStore$PurchaseManagerTest.ic" NAME="PurchaseManagerTest Coverage Results" MODIFIED="1748200093412" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>services.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/ProjectStore$ProductTest.ic" NAME="ProductTest Coverage Results" MODIFIED="1747509459937" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
   </component>

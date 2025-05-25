@@ -17,16 +17,15 @@ public class Receipt implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private final int serialNumber;
-    private final Cashier cashier;
     private final LocalDateTime timestamp;
     private final int itemQuantity;
     private final BigDecimal totalPrice;
     private final Map<StockItem, Integer> products;
-
+    private final String cashierName;
 
     public Receipt(int serialNumber, Cashier cashier, Map<StockItem, Integer> products, int itemQuantity, BigDecimal totalPrice) {
         this.serialNumber = serialNumber;
-        this.cashier = cashier;
+        this.cashierName = cashier.getName();
         this.timestamp = LocalDateTime.now();
         this.itemQuantity = itemQuantity;
         this.totalPrice = totalPrice;
@@ -35,7 +34,7 @@ public class Receipt implements Serializable {
 
     public Receipt(int serialNumber, Cashier cashier, Map<StockItem, Integer> products, int itemQuantity, BigDecimal totalPrice, LocalDateTime timestamp) {
         this.serialNumber = serialNumber;
-        this.cashier = cashier;
+        this.cashierName = cashier.getName();
         this.timestamp = timestamp;
         this.itemQuantity = itemQuantity;
         this.totalPrice = totalPrice;
@@ -46,8 +45,8 @@ public class Receipt implements Serializable {
         return serialNumber;
     }
 
-    public Cashier getCashier() {
-        return cashier;
+    public String getCashier() {
+        return cashierName;
     }
 
     public LocalDateTime getTimestamp() {
@@ -69,7 +68,7 @@ public class Receipt implements Serializable {
     public String formatReceipt() {
         StringBuilder sb = new StringBuilder();
         sb.append("Касова бележка № ").append(serialNumber).append("\n");
-        sb.append("Касиер: ").append(cashier.getName()).append("\n");
+        sb.append("Касиер: ").append(cashierName).append("\n");
         sb.append("Дата и час: ").append(timestamp.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"))).append("\n");
         sb.append("Продукти:\n");
 
