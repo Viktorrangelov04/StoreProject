@@ -104,8 +104,6 @@ public class Store {
         financialManager.addDeliveryCost(totalDeliveryCost);
 
         inventoryManager.addStock(item);
-
-
     }
 
     public Product findProductByName(String name) {

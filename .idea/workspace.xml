@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ca1a20-c2a8-400c-aad1-5e2be4be4c6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/services/PurchaseManagerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/domain/store/StoreTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/storage/FileReceiptStorageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/storage/FileReceiptStorageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_counter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_counter.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,9 +100,11 @@
     "JUnit.ReceiptTest.formatReceipt.executor": "Run",
     "JUnit.ReceiptTest.getProducts.executor": "Run",
     "JUnit.ReceiptTest.getTimestamp.executor": "Run",
+    "JUnit.ReceiptTest.saveToTextFile_ShouldCreateFileWithExpectedContent.executor": "Run",
     "JUnit.StockItemTest.equals_ShouldReturnTrue_ForSameValues.executor": "Debug",
     "JUnit.StockItemTest.getProduct.executor": "Run",
     "JUnit.StockItemTest.getSellingPrice.executor": "Run",
+    "JUnit.StoreTest.processPurchase.executor": "Run",
     "JUnit.Test.executor": "Coverage",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -134,14 +136,14 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="domain.store" />
       <recent name="services" />
       <recent name="pricing" />
       <recent name="exceptions" />
       <recent name="Products" />
-      <recent name="Store" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ReceiptTest.saveToTextFile_ShouldCreateFileWithExpectedContent">
+  <component name="RunManager" selected="JUnit.StoreTest.processPurchase">
     <configuration name="ReceiptTest.saveToTextFile_ShouldCreateFileWithExpectedContent" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProjectStore.test" />
       <extension name="coverage">
@@ -153,6 +155,22 @@
       <option name="PACKAGE_NAME" value="domain.receipt" />
       <option name="MAIN_CLASS_NAME" value="domain.receipt.ReceiptTest" />
       <option name="METHOD_NAME" value="saveToTextFile_ShouldCreateFileWithExpectedContent" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StoreTest.processPurchase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProjectStore.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.store.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain.store" />
+      <option name="MAIN_CLASS_NAME" value="domain.store.StoreTest" />
+      <option name="METHOD_NAME" value="processPurchase" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -172,10 +190,12 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.Test" />
+      <item itemvalue="JUnit.StoreTest.processPurchase" />
       <item itemvalue="JUnit.ReceiptTest.saveToTextFile_ShouldCreateFileWithExpectedContent" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StoreTest.processPurchase" />
         <item itemvalue="JUnit.ReceiptTest.saveToTextFile_ShouldCreateFileWithExpectedContent" />
       </list>
     </recent_temporary>
@@ -219,7 +239,8 @@
       <workItem from="1747926737138" duration="2067000" />
       <workItem from="1747930279935" duration="366000" />
       <workItem from="1748020006302" duration="14629000" />
-      <workItem from="1748083363971" duration="31526000" />
+      <workItem from="1748083363971" duration="31903000" />
+      <workItem from="1748177110811" duration="4013000" />
     </task>
     <servers />
   </component>
@@ -249,7 +270,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/ProjectStore$Test.ic" NAME="Test Coverage Results" MODIFIED="1748124945753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/ProjectStore$Test.ic" NAME="Test Coverage Results" MODIFIED="1748125003859" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
     <SUITE FILE_PATH="coverage/ProjectStore$CashRegisterTest.ic" NAME="CashRegisterTest Coverage Results" MODIFIED="1747849627323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
       <FILTER>Store.*</FILTER>
     </SUITE>
