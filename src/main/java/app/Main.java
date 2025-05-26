@@ -12,18 +12,20 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Store store = StoreFactory.createDefaultStore("My Grocery Store");
+        Store store = StoreFactory.createStore("My Grocery Store", new BigDecimal("30")
+                , new BigDecimal("20"), new BigDecimal("15"), 7);
 
-        // Add some products
+
+        //Adding 100 apples so delivery cost should be 150
         Product apple = new Product("Apple", Category.Food);
         store.addStock(apple, 100, new BigDecimal("1.50"), LocalDate.now().plusDays(7));
 
-        // Add cashier and register
-        Cashier cashier = store.addCashier("John Doe", new BigDecimal("2000"));
+
+        Cashier cashier = store.addCashier("Viktor", new BigDecimal("1200"));
         store.addCashRegistry();
         store.assignToFirstAvailableRegister(cashier);
 
-        // Process purchase
+
         Scanner scanner = new Scanner(System.in);
         try {
             store.processPurchase(scanner, new BigDecimal("50"), cashier);

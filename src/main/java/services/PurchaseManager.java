@@ -47,7 +47,7 @@ public class PurchaseManager {
     }
 
     public Map<StockItem, Integer> getCart() {
-        return new HashMap<>(cart); // Return copy for safety
+        return new HashMap<>(cart);
     }
 
     public void processPurchase(Scanner scanner, BigDecimal clientMoney, Cashier cashier)
