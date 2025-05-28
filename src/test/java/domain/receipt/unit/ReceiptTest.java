@@ -1,5 +1,6 @@
 package domain.receipt.unit;
 
+import domain.product.Product;
 import domain.product.StockItem;
 import domain.receipt.Receipt;
 import domain.store.Cashier;
@@ -50,18 +51,27 @@ class ReceiptTest {
 
     @Test
     void formatReceipt_ShouldContainProductNameAndPrice() {
+        // Arrange
         Cashier cashier = mock(Cashier.class);
         when(cashier.getName()).thenReturn("Maria");
 
+        Product product = mock(Product.class);
+        when(product.getName()).thenReturn("banana");
+
         StockItem item = mock(StockItem.class);
-        when(item.getProduct()).thenReturn(null); // or mock a Product if needed
+        when(item.getProduct()).thenReturn(product);
         when(item.getSellingPrice()).thenReturn(new BigDecimal("5.00"));
 
         Map<StockItem, Integer> products = Collections.singletonMap(item, 2);
 
         Receipt receipt = new Receipt(1, cashier, products, 2, new BigDecimal("10.00"));
 
+        // Act
         String formatted = receipt.formatReceipt();
+
+        // Assert
+        assertTrue(formatted.contains("banana"));
+        assertTrue(formatted.contains("5.00"));
         assertTrue(formatted.contains("10.00"));
     }
 
