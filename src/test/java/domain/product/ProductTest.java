@@ -47,49 +47,63 @@ public class ProductTest {
 
     @Test
     void equals_ShouldReturnTrue_ForSameValues() {
+        //Arrange
         Product a = new Product("Banana", Category.Food);
         Product b = new Product("Banana", Category.Food);
+        //Assert
         assertEquals(a, b);
     }
 
     @Test
     void equals_ShouldReturnFalse_ForDifferentName() {
+        //Arrange
         Product a = new Product("Banana", Category.Food);
         Product b = new Product("Apple", Category.Food);
+        //Assert
         assertNotEquals(a, b);
     }
 
     @Test
     void equals_ShouldReturnFalse_ForDifferentCategory() {
+        //Arrange
         Product a = new Product("Banana", Category.Food);
         Product b = new Product("Banana", Category.NonFood);
+        //Assert
         assertNotEquals(a, b);
     }
 
     @Test
     void equals_ShouldReturnFalse_ForNull() {
+        //Arrange
         Product a = new Product("Banana", Category.Food);
+        //Assert
         assertNotEquals(null, a);
     }
 
     @Test
     void equals_ShouldReturnFalse_ForDifferentType() {
+        //Arrange
         Product a = new Product("Banana", Category.Food);
+        //Assert
         assertNotEquals("not a product", a);
     }
 
     @Test
     void hashCode_ShouldMatch_ForEqualProducts() {
+        //Arrange
         Product a = new Product("Banana", Category.Food);
         Product b = new Product("Banana", Category.Food);
+        //Assert
         assertEquals(a.hashCode(), b.hashCode());
     }
 
     @Test
     void hashCode_ShouldBeConsistent() {
+        //Arrange
         Product a = new Product("Banana", Category.Food);
         int hash1 = a.hashCode();
         int hash2 = a.hashCode();
+        //Assert
         assertEquals(hash1, hash2);
     }
 }

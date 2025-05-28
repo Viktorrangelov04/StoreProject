@@ -3,7 +3,6 @@ package domain.product;
 import java.io.Serial;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Objects;
@@ -62,15 +61,6 @@ public class StockItem implements Serializable {
         this.quantity -= amount;
     }
 
-    public void applyCloseToExpiryDiscount(BigDecimal discountPercentage, int thresholdDays) {
-        if (!isCloseToExpiry(thresholdDays)) return;
-
-        BigDecimal discountRate = discountPercentage.divide(new BigDecimal("100"));
-        BigDecimal multiplier = BigDecimal.ONE.subtract(discountRate);
-
-        this.sellingPrice = sellingPrice.multiply(multiplier).setScale(2, RoundingMode.HALF_UP);
-    }
-
     public void setQuantity(int newQuantity){
         quantity = newQuantity;
     }
@@ -87,8 +77,7 @@ public class StockItem implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof StockItem)) return false;
-        StockItem that = (StockItem) o;
+        if (!(o instanceof StockItem that)) return false;
         return quantity == that.quantity &&
                 product.equals(that.product) &&
                 deliveryPrice.equals(that.deliveryPrice) &&

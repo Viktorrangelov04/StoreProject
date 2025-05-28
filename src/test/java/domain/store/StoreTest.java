@@ -52,7 +52,7 @@ class StoreTest {
 
         store.addStock(apple, 5, new BigDecimal("2.00"), LocalDate.now().plusDays(10));
         //Act
-        StockItem item = store.getStockForProduct(apple).get(0);
+        StockItem item = store.getStockForProduct(apple).getFirst();
         BigDecimal expectedPrice = new BigDecimal("2.00")
                 .multiply(BigDecimal.ONE.add(new BigDecimal("20").divide(new BigDecimal("100"))))
                 .setScale(2, RoundingMode.HALF_UP);
@@ -90,7 +90,7 @@ class StoreTest {
         Scanner scanner = new Scanner("Milk\n1\ndone\n");
         store.processPurchase(scanner, new BigDecimal("10.00"), cashier);
 
-        StockItem item = store.getStockForProduct(milk).get(0);
+        StockItem item = store.getStockForProduct(milk).getFirst();
 
         //Assert
         assertEquals(0, item.getQuantity());

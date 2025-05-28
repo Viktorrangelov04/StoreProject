@@ -32,15 +32,17 @@ class FileReceiptStorageTest {
     }
 
     @Test
-    void getNextReceiptNumber_ShouldIncrementCorrectly() {
+    void getNextReceiptNumber() {
+        //Arrange
         int first = storage.getNextReceiptNumber();
         int second = storage.getNextReceiptNumber();
 
+        //Assert
         assertEquals(first + 1, second);
     }
 
     @Test
-    void saveAndLoadReceipt_ShouldPersistAndRetrieveCorrectly() {
+    void saveAndLoadReceipt() {
         // Arrange
         int serial = storage.getNextReceiptNumber();
         Cashier cashier = new Cashier("Viktor", new BigDecimal("1200"));
@@ -64,7 +66,8 @@ class FileReceiptStorageTest {
     }
 
     @Test
-    void loadAllReceipts_ShouldReturnAllStoredReceipts(){
+    void loadAllReceipts(){
+        //Arrange
         int serial1 = storage.getNextReceiptNumber();
         int serial2 = storage.getNextReceiptNumber();
         Cashier cashier = new Cashier("Mira", new BigDecimal("1000"));
@@ -73,20 +76,24 @@ class FileReceiptStorageTest {
         StockItem item = new StockItem(apple, new BigDecimal("1.50"), 3, LocalDateTime.now().toLocalDate().plusDays(5));
         item.setSellingPrice(new BigDecimal("2.00"));
 
+        //Act
         storage.saveReceipt(new Receipt(serial1, cashier, Map.of(item, 1), 1, new BigDecimal("2.00")));
         storage.saveReceipt(new Receipt(serial2, cashier, Map.of(item, 2), 2, new BigDecimal("4.00")));
 
         List<Receipt> receipts = storage.loadAllReceipts();
 
+        //Assert
         assertEquals(2, receipts.size());
     }
 
     @Test
-    void getTotalReceiptsIssued_ShouldReturnCorrectCount() {
+    void getTotalReceiptsIssued() {
+        //Arrange
         int before = storage.getTotalReceiptsIssued();
         storage.getNextReceiptNumber();
         int after = storage.getTotalReceiptsIssued();
 
+        //Assert
         assertEquals(before + 1, after);
     }
 

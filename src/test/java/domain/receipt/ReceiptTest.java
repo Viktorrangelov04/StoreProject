@@ -13,7 +13,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -86,20 +88,29 @@ class ReceiptTest {
 
     @Test
     void formatReceipt() {
-        //Arrange
+        // Arrange
         Receipt receipt = makeDefaultReceipt();
 
-        //Act
-        String expected = """
-                Касова бележка № 1
-                Касиер: Viktor
-                Дата и час: 2025-05-22 00:00:00
-                Продукти:
-                - banana x2 @ 50.00 лв
-                Обща сума: 100.00 лв.
-                """;
-        //Assert
-        assertEquals(expected, receipt.formatReceipt());
+        String[] lines = {
+                "Фалит ООД",
+                "ЕИК: 100000000",
+                "Касова бележка № 1",
+                "Касиер: Viktor",
+                "Дата и час: 2025-05-22 00:00:00",
+                "Продукти:",
+                "- banana x2 @ 50.00 лв",
+                "Обща сума: 100.00 лв."
+        };
+
+        String expected = Arrays.stream(lines)
+                .map(line -> receipt.center(line, Receipt.RECEIPT_WIDTH))
+                .collect(Collectors.joining("\n")) + "\n";
+
+        // Act
+        String actual = receipt.formatReceipt();
+
+        // Assert
+        assertEquals(expected, actual);
     }
 
     private static final String RECEIPT_FOLDER = "receipts";
@@ -131,10 +142,20 @@ class ReceiptTest {
     }
 
     @Test
-    void serialize() {
-    }
+    void serialize_deserialize() throws IOException, ClassNotFoundException {
+        // Arrange
+        Receipt original = makeDefaultReceipt();
+        original.serialize();
 
-    @Test
-    void deserialize() {
+        // Act
+        Receipt deserialized = Receipt.deserialize(original.getSerialNumber());
+
+        // Assert
+        assertEquals(original.getSerialNumber(), deserialized.getSerialNumber());
+        assertEquals(original.getCashier(), deserialized.getCashier());
+        assertEquals(original.getTimestamp(), deserialized.getTimestamp());
+        assertEquals(original.getItemQuantity(), deserialized.getItemQuantity());
+        assertEquals(original.getTotalPrice(), deserialized.getTotalPrice());
+        assertEquals(original.getProducts(), deserialized.getProducts());
     }
 }

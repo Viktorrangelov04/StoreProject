@@ -117,12 +117,12 @@ public class Store {
         return employeeManager.addCashier(name, salary);
     }
 
-    public CashRegister addCashRegistry() {
-        return employeeManager.addCashRegistry();
+    public void addCashRegistry() {
+        employeeManager.addCashRegistry();
     }
 
-    public boolean assignToFirstAvailableRegister(Cashier cashier) {
-        return employeeManager.assignToFirstAvailableRegister(cashier);
+    public void assignToFirstAvailableRegister(Cashier cashier) {
+        employeeManager.assignToFirstAvailableRegister(cashier);
     }
 
     public BigDecimal getStoreRevenue() {

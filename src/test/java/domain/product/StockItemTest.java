@@ -195,48 +195,62 @@ public class StockItemTest {
 
     @Test
     void equals_ShouldReturnTrue_ForSameObject() {
+        //Arrange
         StockItem item = createItem(5);
+        //Assert
         assertEquals(item, item);
     }
 
     @Test
     void equals_ShouldReturnTrue_ForSameValues() {
+        //Arrange
         StockItem a = createItem(5);
         StockItem b = createItem(5);
+        //Assert
         assertEquals(a, b);
     }
 
     @Test
     void equals_ShouldReturnFalse_ForDifferentQuantity() {
+        //Arrange
         StockItem a = createItem(5);
         StockItem b = createItem(6);
+        //Assert
         assertNotEquals(a, b);
     }
 
     @Test
     void equals_ShouldReturnFalse_ForNull() {
+        //Arrange
         StockItem a = createItem(5);
+        //Assert
         assertNotEquals(null, a);
     }
 
     @Test
     void equals_ShouldReturnFalse_ForDifferentType() {
+        //Arrange
         StockItem a = createItem(5);
+        //Assert
         assertNotEquals("not a stock item", a);
     }
 
     @Test
     void hashCode_ShouldBeEqual_ForEqualObjects() {
+        //Arrange
         StockItem a = createItem(5);
         StockItem b = createItem(5);
+        //Assert
         assertEquals(a.hashCode(), b.hashCode());
     }
 
     @Test
     void hashCode_ShouldBeConsistent() {
+        //Arrange
         StockItem a = createItem(5);
         int hash1 = a.hashCode();
         int hash2 = a.hashCode();
+        //Assert
         assertEquals(hash1, hash2);
     }
 }
