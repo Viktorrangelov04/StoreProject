@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ca1a20-c2a8-400c-aad1-5e2be4be4c6c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/services/unit/InventoryManagerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/services/unit/PurchaseManagerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/storage/unit/FileReceiptStorageTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/domain/store/unit/StoreTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/services/EmployeeManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/unit/EmployeeManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/services/FinancialManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/unit/FinancialManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_1.ser" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_1.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/product/unit/StockItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/product/unit/StockItemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/unit/CashRegisterTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,11 +145,11 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="domain.store" />
       <recent name="storage" />
       <recent name="services" />
       <recent name="pricing" />
       <recent name="domain.receipt" />
-      <recent name="domain.store" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.Test">
@@ -286,7 +285,8 @@
       <workItem from="1748416114282" duration="4738000" />
       <workItem from="1748424609758" duration="86000" />
       <workItem from="1748427212917" duration="736000" />
-      <workItem from="1748427966102" duration="4164000" />
+      <workItem from="1748427966102" duration="4207000" />
+      <workItem from="1748432895942" duration="3127000" />
     </task>
     <servers />
   </component>
