@@ -5,20 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ca1a20-c2a8-400c-aad1-5e2be4be4c6c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/domain/receipt/Serializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/domain/product/unit/StockItemTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/domain/receipt/SerializerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/domain/receipt/unit/ReceiptTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/product/ITProductTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/product/integration/ITProductTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/product/ITStockItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/product/integration/ITStockItemTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/receipt/ITReceiptTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/receipt/integration/ITReceiptTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/ITCashRegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/store/integration/ITCashRegisterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/ITCashierTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/store/integration/ITCashierTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/ITStoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/store/integration/ITStoreTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pricing/ITExpiryDiscountStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pricing/integration/ITExpiryDiscountStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pricing/ITMarkupStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pricing/integration/ITMarkupStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/services/ITEmployeeManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/integration/ITEmployeeManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/services/ITFinancialManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/integration/ITFinancialManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/services/ITInventoryManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/integration/ITInventoryManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/services/ITPurchaseManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/integration/ITPurchaseManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/storage/ITFileReceiptStorageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/storage/integration/ITFileReceiptStorageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_1.ser" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_1.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_counter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_counter.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/domain/receipt/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/receipt/Receipt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/storage/FileReceiptStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/storage/FileReceiptStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/receipt/integration/ITReceiptTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/receipt/integration/ITReceiptTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +53,8 @@
       <list>
         <option value="Enum" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="Exception" />
+        <option value="Class" />
         <option value="JUnit5 Test Class" />
       </list>
     </option>
@@ -99,12 +97,14 @@
     &quot;Gradle.ProductTest.getName.executor&quot;: &quot;Run&quot;,
     &quot;Gradle.ProjectStore [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.StockItemTest.isCloseToExpiry.executor&quot;: &quot;Profiler#1&quot;,
+    &quot;JUnit.All in ProjectStore.test.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.CashRegisterTest.executor&quot;: &quot;Coverage&quot;,
     &quot;JUnit.ExpiryDiscountStrategyTest.applyDiscountIfNeeded.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.ExpiryDiscountStrategyTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.FileReceiptStorageTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.FinancialManagerTest.addDeliveryCost.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.FinancialManagerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ITProductTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.MarkupStrategyTest.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.MarkupStrategyTest.getAllMarkups.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.MarkupStrategyTest.getMarkup.executor&quot;: &quot;Run&quot;,
@@ -120,6 +120,8 @@
     &quot;JUnit.StockItemTest.getSellingPrice.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.StoreTest.processPurchase.executor&quot;: &quot;Run&quot;,
     &quot;JUnit.Test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.domain in ProjectStore.test.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.domain.product.integration in ProjectStore.test.executor&quot;: &quot;Run&quot;,
     &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -157,12 +159,34 @@
       <recent name="Products" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Test" type="JUnit" factoryName="JUnit">
+  <component name="RunManager" selected="JUnit.Test">
+    <configuration name="All in ProjectStore.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProjectStore.test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ITProductTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProjectStore.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.product.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain.product.integration" />
+      <option name="MAIN_CLASS_NAME" value="domain.product.integration.ITProductTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="ALTERNATIVE_JRE_PATH" value="temurin-21" />
-      <option name="PACKAGE_NAME" value="domain" />
+      <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
@@ -174,6 +198,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="domain in ProjectStore.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProjectStore.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="domain.product.integration in ProjectStore.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProjectStore.test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="domain.product.integration.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="domain.product.integration" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.Test" />
+      <item itemvalue="JUnit.All in ProjectStore.test" />
+      <item itemvalue="JUnit.ITProductTest" />
+      <item itemvalue="JUnit.domain in ProjectStore.test" />
+      <item itemvalue="JUnit.domain.product.integration in ProjectStore.test" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ITProductTest" />
+        <item itemvalue="JUnit.domain.product.integration in ProjectStore.test" />
+        <item itemvalue="JUnit.domain in ProjectStore.test" />
+        <item itemvalue="JUnit.All in ProjectStore.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -224,6 +291,8 @@
       <workItem from="1748414533109" duration="35000" />
       <workItem from="1748416114282" duration="4738000" />
       <workItem from="1748424609758" duration="86000" />
+      <workItem from="1748427212917" duration="736000" />
+      <workItem from="1748427966102" duration="1326000" />
     </task>
     <servers />
   </component>

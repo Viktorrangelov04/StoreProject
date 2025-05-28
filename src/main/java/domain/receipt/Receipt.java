@@ -3,14 +3,12 @@ package domain.receipt;
 import domain.product.StockItem;
 import domain.store.Cashier;
 
-import java.io.*;
+import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Collections;
 import java.util.Map;
 
 public class Receipt implements Serializable {
@@ -43,29 +41,12 @@ public class Receipt implements Serializable {
         this.products = products;
     }
 
-    public int getSerialNumber() {
-        return serialNumber;
-    }
-
-    public String getCashier() {
-        return cashierName;
-    }
-
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
-
-    public int getItemQuantity() {
-        return itemQuantity;
-    }
-
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
-    }
-
-    public Map<StockItem, Integer> getProducts() {
-        return products;
-    }
+    public int getSerialNumber() { return serialNumber; }
+    public String getCashier() { return cashierName; }
+    public LocalDateTime getTimestamp() { return timestamp; }
+    public int getItemQuantity() { return itemQuantity; }
+    public BigDecimal getTotalPrice() { return totalPrice; }
+    public Map<StockItem, Integer> getProducts() { return products; }
 
     public String center(String text, int width) {
         if (text.length() >= width) {
@@ -98,36 +79,5 @@ public class Receipt implements Serializable {
         sb.append(center("Обща сума: " + totalPrice.setScale(2, RoundingMode.HALF_UP) + " лв.", RECEIPT_WIDTH)).append("\n");
 
         return sb.toString();
-    }
-
-
-
-    public void saveToTextFile() throws IOException {
-        String folder = "receipts";
-        String filename = "receipt_" + serialNumber + ".txt";
-
-        Path path = Path.of(folder, filename);
-        Files.createDirectories(path.getParent());
-        Files.write(path, formatReceipt().getBytes());
-    }
-
-    public void serialize() throws IOException {
-        String folder = "receipts";
-        String filename = "receipt_" + serialNumber + ".ser";
-
-        Path path = Path.of(folder, filename);
-        Files.createDirectories(path.getParent());
-
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path.toFile()))) {
-            oos.writeObject(this);
-        }
-    }
-
-    public static Receipt deserialize(int serialNumber) throws IOException, ClassNotFoundException {
-        String path = "receipts/receipt_" + serialNumber + ".ser";
-
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path))) {
-            return (Receipt) ois.readObject();
-        }
     }
 }

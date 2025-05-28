@@ -1,6 +1,7 @@
 package domain.receipt.integration;
 
 import domain.receipt.Receipt;
+import domain.receipt.Serializer;
 import domain.store.Cashier;
 import domain.product.Category;
 import domain.product.Product;
@@ -128,7 +129,7 @@ class ITReceiptTest {
     @Test
     void saveToTextFile_ShouldCreateFileWithExpectedContent() throws IOException {
         Receipt receipt = makeDefaultReceipt();
-        receipt.saveToTextFile();
+        Serializer.saveToTextFile(receipt);
 
         Path filePath = Path.of(RECEIPT_FOLDER, RECEIPT_FILENAME);
         assertTrue(Files.exists(filePath));
@@ -146,10 +147,10 @@ class ITReceiptTest {
     void serialize_deserialize_ShouldBeAbleToSerialize_AndDeserialize() throws IOException, ClassNotFoundException {
         // Arrange
         Receipt original = makeDefaultReceipt();
-        original.serialize();
+        Serializer.serialize(original);
 
         // Act
-        Receipt deserialized = Receipt.deserialize(original.getSerialNumber());
+        Receipt deserialized = Serializer.deserialize(original.getSerialNumber());
 
         // Assert
         assertEquals(original.getSerialNumber(), deserialized.getSerialNumber());
@@ -159,4 +160,5 @@ class ITReceiptTest {
         assertEquals(original.getTotalPrice(), deserialized.getTotalPrice());
         assertEquals(original.getProducts(), deserialized.getProducts());
     }
+
 }

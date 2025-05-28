@@ -1,6 +1,7 @@
 package storage;
 
 import domain.receipt.Receipt;
+import domain.receipt.Serializer;
 
 import java.io.*;
 import java.nio.file.*;
@@ -47,17 +48,18 @@ public class FileReceiptStorage implements ReceiptStorage {
     @Override
     public void saveReceipt(Receipt receipt) {
         try {
-            receipt.saveToTextFile();
-            receipt.serialize();
+            Serializer.saveToTextFile(receipt);
+            Serializer.serialize(receipt);
         } catch (IOException e) {
             System.out.println("Failed to save receipt: " + e.getMessage());
         }
     }
 
+
     @Override
     public Receipt loadReceipt(int serialNumber) {
         try {
-            return Receipt.deserialize(serialNumber);
+            return Serializer.deserialize(serialNumber);
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Failed to load receipt #" + serialNumber + ": " + e.getMessage());
             return null;
