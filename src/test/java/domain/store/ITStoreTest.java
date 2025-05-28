@@ -16,7 +16,7 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class StoreTest {
+class ITStoreTest {
     @Test
     void getId() {
         //Arrange
@@ -45,7 +45,7 @@ class StoreTest {
     }
 
     @Test
-    void addStock() {
+    void addStock_ShouldAddStockCorrectly() {
         //Arrange
         Store store = StoreFactory.createDefaultStore("Test Store");
         Product apple = new Product("Apple", Category.Food);
@@ -78,7 +78,7 @@ class StoreTest {
     }
 
     @Test
-    void processPurchase() throws InsufficientStockException, InsufficientFundsException, IOException {
+    void processPurchase_ShouldProcessPurchase() throws InsufficientStockException, InsufficientFundsException, IOException {
         //Arrange
         Store store = StoreFactory.createDefaultStore("Test Store");
         Product milk = new Product("Milk", Category.Food);

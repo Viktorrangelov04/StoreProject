@@ -25,8 +25,6 @@ public class ExpiryDiscountStrategy {
         return daysBeforeExpiryThreshold;
     }
 
-
-
     public void applyDiscountIfNeeded(StockItem item) {
         if (item.isCloseToExpiry(daysBeforeExpiryThreshold)
                 && !item.isExpired()) {

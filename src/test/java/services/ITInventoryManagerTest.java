@@ -12,7 +12,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class InventoryManagerTest {
+public class ITInventoryManagerTest {
 
     @Test
     void addStock_ShouldAddToInventory() {
@@ -29,7 +29,7 @@ public class InventoryManagerTest {
     }
 
     @Test
-    void findProductByName() {
+    void findProductByName_ShouldReturnProduct() {
         InventoryManager manager = new InventoryManager();
         Product product = new Product("Bread", Category.Food);
         StockItem item = new StockItem(product, new BigDecimal("0.80"), 10, LocalDate.now().plusDays(3));
@@ -47,7 +47,7 @@ public class InventoryManagerTest {
     }
 
     @Test
-    void getStockForProduct() {
+    void getStockForProduct_ShouldReturnStock() {
         InventoryManager manager = new InventoryManager();
         Product product = new Product("Eggs", Category.Food);
         StockItem item1 = new StockItem(product, new BigDecimal("0.20"), 12, LocalDate.now().plusDays(7));
@@ -70,7 +70,7 @@ public class InventoryManagerTest {
     }
 
     @Test
-    void getFirstAvailableStockItem() {
+    void getFirstAvailableStockItem_ShouldReturnFirstAvailableStockItem_InInventory() {
         InventoryManager manager = new InventoryManager();
         Product product = new Product("Yogurt", Category.Food);
         StockItem available = new StockItem(product, new BigDecimal("1.00"), 3, LocalDate.now().plusDays(3));

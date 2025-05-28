@@ -5,21 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ca1a20-c2a8-400c-aad1-5e2be4be4c6c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/receipts/receipt_1.ser" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_1.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/receipts/receipt_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/receipt_2.ser" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_2.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/receipt_2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_2.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_3.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_3.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_4.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_4.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_5.ser" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/receipts/receipt_5.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/receipts/receipt_counter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_counter.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/app/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/product/StockItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/product/StockItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/receipt/Receipt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/receipt/Receipt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/store/Store.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/domain/store/Store.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/product/ProductTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/product/ProductTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/product/StockItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/product/StockItemTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/receipt/ReceiptTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/receipt/ReceiptTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/StoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/store/StoreTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/storage/FileReceiptStorageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/storage/FileReceiptStorageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pricing/ExpiryDiscountStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pricing/ExpiryDiscountStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/product/ProductTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/product/ITProductTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/product/StockItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/product/ITStockItemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/receipt/ReceiptTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/receipt/ITReceiptTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/CashRegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/store/ITCashRegisterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/CashierTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/store/ITCashierTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/StoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/store/ITStoreTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/exceptions/InsufficientFundsExceptionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/exceptions/InsufficientStockExceptionTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pricing/ExpiryDiscountStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pricing/ITExpiryDiscountStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pricing/MarkupStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pricing/ITMarkupStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/EmployeeManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/ITEmployeeManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/FinancialManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/ITFinancialManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/InventoryManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/ITInventoryManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/PurchaseManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/ITPurchaseManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/storage/FileReceiptStorageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/storage/ITFileReceiptStorageTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,59 +105,59 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.StockItem.executor": "Run",
-    "Application.Unnamed.executor": "Run",
-    "Gradle.ProductTest.executor": "Run",
-    "Gradle.ProductTest.getId.executor": "Run",
-    "Gradle.ProductTest.getName.executor": "Run",
-    "Gradle.ProjectStore [:org.example.Main.main()].executor": "Run",
-    "Gradle.StockItemTest.isCloseToExpiry.executor": "Profiler#1",
-    "JUnit.CashRegisterTest.executor": "Coverage",
-    "JUnit.ExpiryDiscountStrategyTest.applyDiscountIfNeeded.executor": "Run",
-    "JUnit.ExpiryDiscountStrategyTest.executor": "Run",
-    "JUnit.FileReceiptStorageTest.executor": "Run",
-    "JUnit.FinancialManagerTest.addDeliveryCost.executor": "Run",
-    "JUnit.FinancialManagerTest.executor": "Run",
-    "JUnit.MarkupStrategyTest.executor": "Run",
-    "JUnit.MarkupStrategyTest.getAllMarkups.executor": "Run",
-    "JUnit.MarkupStrategyTest.getMarkup.executor": "Run",
-    "JUnit.ProductTest.executor": "Run",
-    "JUnit.PurchaseManagerTest.executor": "Run",
-    "JUnit.ReceiptTest.executor": "Run",
-    "JUnit.ReceiptTest.formatReceipt.executor": "Run",
-    "JUnit.ReceiptTest.getProducts.executor": "Run",
-    "JUnit.ReceiptTest.getTimestamp.executor": "Run",
-    "JUnit.ReceiptTest.saveToTextFile_ShouldCreateFileWithExpectedContent.executor": "Run",
-    "JUnit.StockItemTest.equals_ShouldReturnTrue_ForSameValues.executor": "Debug",
-    "JUnit.StockItemTest.getProduct.executor": "Run",
-    "JUnit.StockItemTest.getSellingPrice.executor": "Run",
-    "JUnit.StoreTest.processPurchase.executor": "Run",
-    "JUnit.Test.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
-    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Projects/ProjectStore",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.StockItem.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductTest.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductTest.getId.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProductTest.getName.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.ProjectStore [:org.example.Main.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.StockItemTest.isCloseToExpiry.executor&quot;: &quot;Profiler#1&quot;,
+    &quot;JUnit.CashRegisterTest.executor&quot;: &quot;Coverage&quot;,
+    &quot;JUnit.ExpiryDiscountStrategyTest.applyDiscountIfNeeded.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ExpiryDiscountStrategyTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FileReceiptStorageTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FinancialManagerTest.addDeliveryCost.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.FinancialManagerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MarkupStrategyTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MarkupStrategyTest.getAllMarkups.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MarkupStrategyTest.getMarkup.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ProductTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.PurchaseManagerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReceiptTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReceiptTest.formatReceipt.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReceiptTest.getProducts.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReceiptTest.getTimestamp.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReceiptTest.saveToTextFile_ShouldCreateFileWithExpectedContent.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StockItemTest.equals_ShouldReturnTrue_ForSameValues.executor&quot;: &quot;Debug&quot;,
+    &quot;JUnit.StockItemTest.getProduct.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StockItemTest.getSellingPrice.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.StoreTest.processPurchase.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.Test.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
+    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Projects/ProjectStore&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
@@ -151,9 +166,9 @@
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="pricing" />
       <recent name="services" />
       <recent name="domain.store" />
-      <recent name="pricing" />
       <recent name="exceptions" />
       <recent name="Products" />
     </key>
@@ -218,6 +233,8 @@
       <workItem from="1748308033656" duration="2000" />
       <workItem from="1748377894653" duration="3585000" />
       <workItem from="1748412108839" duration="2393000" />
+      <workItem from="1748414533109" duration="35000" />
+      <workItem from="1748416114282" duration="4031000" />
     </task>
     <servers />
   </component>

@@ -18,10 +18,10 @@ import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PurchaseManagerTest {
+public class ITPurchaseManagerTest {
 
     @Test
-    void addToCart() {
+    void addToCart_ShouldAddToCart() {
         InventoryManager inventoryManager = new InventoryManager();
         FinancialManager financialManager = new FinancialManager();
         ExpiryDiscountStrategy discountStrategy = new ExpiryDiscountStrategy(new BigDecimal("10"), 7);
@@ -54,7 +54,7 @@ public class PurchaseManagerTest {
     }
 
     @Test
-    void validatePayment() {
+    void validatePayment_ShouldReturnTrue_IfEnoughMoney() {
         InventoryManager inventoryManager = new InventoryManager();
         FinancialManager financialManager = new FinancialManager();
         ExpiryDiscountStrategy discountStrategy = new ExpiryDiscountStrategy(new BigDecimal("10"), 7);
@@ -74,7 +74,7 @@ public class PurchaseManagerTest {
     }
 
     @Test
-    void processPurchase() throws Exception {
+    void processPurchase_ShouldConnectOtherMethodsProperly() throws Exception {
         InventoryManager inventoryManager = new InventoryManager();
         FinancialManager financialManager = new FinancialManager();
         ExpiryDiscountStrategy discountStrategy = new ExpiryDiscountStrategy(new BigDecimal("10"), 7);

@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ReceiptTest {
+class ITReceiptTest {
     private Receipt makeDefaultReceipt(){
         int serial = 1;
         Cashier cashier = new Cashier("Viktor", new BigDecimal("1200"));
@@ -87,7 +87,7 @@ class ReceiptTest {
     }
 
     @Test
-    void formatReceipt() {
+    void formatReceipt_ShouldFormatCorrectly() {
         // Arrange
         Receipt receipt = makeDefaultReceipt();
 
@@ -142,7 +142,7 @@ class ReceiptTest {
     }
 
     @Test
-    void serialize_deserialize() throws IOException, ClassNotFoundException {
+    void serialize_deserialize_ShouldBeAbleToSerialize_AndDeserialize() throws IOException, ClassNotFoundException {
         // Arrange
         Receipt original = makeDefaultReceipt();
         original.serialize();

@@ -16,7 +16,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FileReceiptStorageTest {
+class ITFileReceiptStorageTest {
 
     private FileReceiptStorage storage;
 
@@ -32,7 +32,7 @@ class FileReceiptStorageTest {
     }
 
     @Test
-    void getNextReceiptNumber() {
+    void getNextReceiptNumber_ShouldReturnNextReceiptNumber() {
         //Arrange
         int first = storage.getNextReceiptNumber();
         int second = storage.getNextReceiptNumber();
@@ -42,7 +42,7 @@ class FileReceiptStorageTest {
     }
 
     @Test
-    void saveAndLoadReceipt() {
+    void saveAndLoadReceipt_ShouldSaveReceipt_AndReturnReceipt() {
         // Arrange
         int serial = storage.getNextReceiptNumber();
         Cashier cashier = new Cashier("Viktor", new BigDecimal("1200"));
@@ -66,7 +66,7 @@ class FileReceiptStorageTest {
     }
 
     @Test
-    void loadAllReceipts(){
+    void loadAllReceipts_ShouldLoadAllReceipts(){
         //Arrange
         int serial1 = storage.getNextReceiptNumber();
         int serial2 = storage.getNextReceiptNumber();
@@ -87,7 +87,7 @@ class FileReceiptStorageTest {
     }
 
     @Test
-    void getTotalReceiptsIssued() {
+    void getTotalReceiptsIssued_ShouldReturnReceiptCount() {
         //Arrange
         int before = storage.getTotalReceiptsIssued();
         storage.getNextReceiptNumber();

@@ -9,7 +9,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MarkupStrategyTest {
+class ITMarkupStrategyTest {
 
     @Test
     void getMarkup() {
@@ -42,7 +42,7 @@ class MarkupStrategyTest {
     }
 
     @Test
-    void getAllMarkups() {
+    void getAllMarkups_ShouldReturnAllMarkups() {
         //Arrange
         Map<Category, BigDecimal> markupPercentages = Map.of(
                 Category.Food, new BigDecimal("30"),
@@ -60,7 +60,7 @@ class MarkupStrategyTest {
     }
 
     @Test
-    void calculateSellingPrice() {
+    void calculateSellingPrice_ShouldReturnSellingPrice() {
         Map<Category, BigDecimal> markupPercentages = Map.of(
                 Category.Food, new BigDecimal("30"),
                 Category.NonFood, new BigDecimal("20")

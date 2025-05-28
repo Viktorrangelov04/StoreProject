@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class EmployeeManagerTest {
+public class ITEmployeeManagerTest {
 
     private EmployeeManager employeeManager;
 
@@ -20,7 +20,7 @@ public class EmployeeManagerTest {
     }
 
     @Test
-    void addCashier() {
+    void addCashier_ShouldAddCashier() {
         //Arrange
         Cashier cashier = employeeManager.addCashier("Viktor", new BigDecimal("1200"));
         List<Cashier> cashiers = employeeManager.getAllCashiers();
@@ -33,7 +33,7 @@ public class EmployeeManagerTest {
     }
 
     @Test
-    void addCashRegister() {
+    void addCashRegister_ShouldAddCashRegister() {
         //Arrange
         CashRegister register = employeeManager.addCashRegistry();
 
@@ -69,7 +69,7 @@ public class EmployeeManagerTest {
     }
 
     @Test
-    void unassignWorkerFromCashRegistry() {
+    void unassignWorkerFromCashRegistry_ShouldUnassignFromCashRegistry() {
         //Arrange
         Cashier cashier = employeeManager.addCashier("Viktor", new BigDecimal("1200"));
         CashRegister register = employeeManager.addCashRegistry();

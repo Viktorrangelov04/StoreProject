@@ -6,10 +6,10 @@ import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class CashRegisterTest {
+class ITCashRegisterTest {
 
     @Test
-    void isAvailable() {
+    void isAvailable_ShouldReturnTrue_IfAvailable() {
         //Arrange
         CashRegister cashRegister = new CashRegister();
         //Assert
@@ -17,7 +17,7 @@ class CashRegisterTest {
     }
 
     @Test
-    void assign() {
+    void assign_ShouldAssignCorrectly_AndBecomeUnavailable() {
         //Arrange
         Cashier cashier = new Cashier("Viktor", new BigDecimal("1200"));
         CashRegister cashRegister = new CashRegister();
@@ -31,7 +31,7 @@ class CashRegisterTest {
 
 
     @Test
-    void unassign() {
+    void unassign_ShouldUnassign() {
         //Arrange
         Cashier cashier = new Cashier("Viktor", new BigDecimal("1200"));
         CashRegister cashRegister = new CashRegister();
@@ -44,7 +44,7 @@ class CashRegisterTest {
     }
 
     @Test
-    void getAssignedCashier() {
+    void getAssignedCashier_ShouldReturnCashier() {
         //Arrange
         Cashier cashier = new Cashier("Viktor", new BigDecimal("1200"));
         CashRegister cashRegister = new CashRegister();

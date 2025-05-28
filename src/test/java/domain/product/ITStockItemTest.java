@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-public class StockItemTest {
+public class ITStockItemTest {
 
     private StockItem makeDefaultItem() {
         Product product = new Product("Apple", Category.Food);
@@ -107,7 +107,7 @@ public class StockItemTest {
     }
 
     @Test
-    void addQuantity() {
+    void addQuantity_ShouldUpdateQuantityCorrectly() {
         //Arrange
         StockItem item = makeDefaultItem();
         //Act
@@ -124,7 +124,7 @@ public class StockItemTest {
     }
 
     @Test
-    void removeQuantity() {
+    void removeQuantity_ShouldReduceAmountCorrectly() {
         //Arrange
         StockItem item = makeDefaultItem();
         //Act

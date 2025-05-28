@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ExpiryDiscountStrategyTest {
+class ITExpiryDiscountStrategyTest {
 
     @Test
     void getDiscountPercent() {
@@ -30,7 +30,7 @@ class ExpiryDiscountStrategyTest {
     }
 
     @Test
-    void applyDiscountIfNeeded() {
+    void applyDiscountIfNeeded_ShouldApply_IfNeeded() {
         // Arrange
         StockItem item = new StockItem(new Product("Apple", Category.Food),
                 new BigDecimal("20"), 2, LocalDate.now().plusDays(5));

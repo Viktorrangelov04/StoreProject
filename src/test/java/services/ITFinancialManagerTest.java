@@ -8,7 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class FinancialManagerTest {
+class ITFinancialManagerTest {
 
     @Test
     void getStoreRevenue() {
@@ -27,7 +27,7 @@ class FinancialManagerTest {
     }
 
     @Test
-    void addDeliveryCost() {
+    void addDeliveryCost_ShouldIncreaseDeliveryCost() {
         //Arrange
         FinancialManager financialManager = new FinancialManager();
         //Act
@@ -37,7 +37,7 @@ class FinancialManagerTest {
     }
 
     @Test
-    void addRevenue() {
+    void addRevenue_ShouldIncreaseRevenue() {
         //Arrange
         FinancialManager financialManager = new FinancialManager();
         //Act
@@ -47,7 +47,7 @@ class FinancialManagerTest {
     }
 
     @Test
-    void calculateProfit() {
+    void calculateProfit_ShouldReturnProfit() {
         // Arrange
         FinancialManager financialManager = new FinancialManager();
         financialManager.addRevenue(new BigDecimal("1000"));
