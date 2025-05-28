@@ -1,7 +1,8 @@
-package services;
+package services.unit;
 
 import domain.store.Cashier;
 import org.junit.jupiter.api.Test;
+import services.FinancialManager;
 
 import java.math.BigDecimal;
 import java.util.Arrays;

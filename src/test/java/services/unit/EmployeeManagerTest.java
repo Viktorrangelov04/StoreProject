@@ -1,4 +1,4 @@
-package services;
+package services.unit;
 
 import domain.store.CashRegister;
 import domain.store.Cashier;
