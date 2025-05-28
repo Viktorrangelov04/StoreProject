@@ -1,8 +1,10 @@
-package domain.store;
+package domain.store.integration;
 
 import domain.product.Category;
 import domain.product.Product;
 import domain.product.StockItem;
+import domain.store.Cashier;
+import domain.store.Store;
 import exceptions.InsufficientFundsException;
 import exceptions.InsufficientStockException;
 import org.junit.jupiter.api.Test;

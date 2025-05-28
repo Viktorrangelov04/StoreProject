@@ -1,9 +1,10 @@
-package services;
+package services.integration;
 
 import domain.store.CashRegister;
 import domain.store.Cashier;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import services.EmployeeManager;
 
 import java.math.BigDecimal;
 import java.util.List;

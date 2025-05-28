@@ -1,4 +1,4 @@
-package services;
+package services.integration;
 
 import domain.product.Category;
 import domain.product.Product;
@@ -8,6 +8,9 @@ import domain.store.Cashier;
 import exceptions.InsufficientFundsException;
 import org.junit.jupiter.api.Test;
 import pricing.ExpiryDiscountStrategy;
+import services.FinancialManager;
+import services.InventoryManager;
+import services.PurchaseManager;
 import storage.ReceiptStorage;
 
 import java.io.ByteArrayInputStream;

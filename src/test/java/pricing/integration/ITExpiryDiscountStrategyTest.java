@@ -1,9 +1,10 @@
-package pricing;
+package pricing.integration;
 
 import domain.product.Category;
 import domain.product.Product;
 import domain.product.StockItem;
 import org.junit.jupiter.api.Test;
+import pricing.ExpiryDiscountStrategy;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

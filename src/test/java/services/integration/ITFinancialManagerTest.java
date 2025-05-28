@@ -1,7 +1,8 @@
-package services;
+package services.integration;
 
 import domain.store.Cashier;
 import org.junit.jupiter.api.Test;
+import services.FinancialManager;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -47,7 +48,7 @@ class ITFinancialManagerTest {
     }
 
     @Test
-    void calculateProfit_ShouldReturnProfit() {
+        void calculateProfit_ShouldReturnProfit() {
         // Arrange
         FinancialManager financialManager = new FinancialManager();
         financialManager.addRevenue(new BigDecimal("1000"));

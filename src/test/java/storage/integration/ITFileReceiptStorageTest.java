@@ -1,4 +1,4 @@
-package storage;
+package storage.integration;
 
 import domain.product.Category;
 import domain.product.Product;
@@ -6,6 +6,7 @@ import domain.product.StockItem;
 import domain.receipt.Receipt;
 import domain.store.Cashier;
 import org.junit.jupiter.api.*;
+import storage.FileReceiptStorage;
 
 import java.io.IOException;
 import java.math.BigDecimal;

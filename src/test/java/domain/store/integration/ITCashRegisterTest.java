@@ -1,5 +1,7 @@
-package domain.store;
+package domain.store.integration;
 
+import domain.store.CashRegister;
+import domain.store.Cashier;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

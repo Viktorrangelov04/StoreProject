@@ -5,36 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8ca1a20-c2a8-400c-aad1-5e2be4be4c6c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/receipt_1.ser" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_1.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/receipt_1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/receipt_2.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/receipt_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/receipt_3.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/receipt_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/receipt_4.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/receipt_4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/receipt_5.ser" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/receipt_5.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/receipts/receipt_counter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/receipts/receipt_counter.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pricing/ExpiryDiscountStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pricing/ExpiryDiscountStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/product/ProductTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/product/ITProductTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/product/StockItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/product/ITStockItemTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/receipt/ReceiptTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/receipt/ITReceiptTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/CashRegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/store/ITCashRegisterTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/CashierTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/store/ITCashierTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/StoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/store/ITStoreTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/exceptions/InsufficientFundsExceptionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/exceptions/InsufficientStockExceptionTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pricing/ExpiryDiscountStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pricing/ITExpiryDiscountStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/pricing/MarkupStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pricing/ITMarkupStrategyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/services/EmployeeManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/ITEmployeeManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/services/FinancialManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/ITFinancialManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/services/InventoryManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/ITInventoryManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/services/PurchaseManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/ITPurchaseManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/storage/FileReceiptStorageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/storage/ITFileReceiptStorageTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/product/ITProductTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/product/integration/ITProductTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/product/ITStockItemTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/product/integration/ITStockItemTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/receipt/ITReceiptTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/receipt/integration/ITReceiptTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/ITCashRegisterTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/store/integration/ITCashRegisterTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/ITCashierTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/store/integration/ITCashierTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/domain/store/ITStoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/domain/store/integration/ITStoreTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pricing/ITExpiryDiscountStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pricing/integration/ITExpiryDiscountStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/pricing/ITMarkupStrategyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/pricing/integration/ITMarkupStrategyTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/ITEmployeeManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/integration/ITEmployeeManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/ITFinancialManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/integration/ITFinancialManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/ITInventoryManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/integration/ITInventoryManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/ITPurchaseManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/integration/ITPurchaseManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/storage/ITFileReceiptStorageTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/storage/integration/ITFileReceiptStorageTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -178,10 +162,14 @@
       <module name="ProjectStore.test" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="ALTERNATIVE_JRE_PATH" value="temurin-21" />
-      <option name="PACKAGE_NAME" value="" />
+      <option name="PACKAGE_NAME" value="domain" />
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <dir value="$PROJECT_DIR$/src/test/java" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -234,7 +222,8 @@
       <workItem from="1748377894653" duration="3585000" />
       <workItem from="1748412108839" duration="2393000" />
       <workItem from="1748414533109" duration="35000" />
-      <workItem from="1748416114282" duration="4031000" />
+      <workItem from="1748416114282" duration="4738000" />
+      <workItem from="1748424609758" duration="86000" />
     </task>
     <servers />
   </component>

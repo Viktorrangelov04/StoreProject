@@ -1,7 +1,8 @@
-package pricing;
+package pricing.integration;
 
 import domain.product.Category;
 import org.junit.jupiter.api.Test;
+import pricing.MarkupStrategy;
 
 import java.math.BigDecimal;
 import java.util.HashMap;

@@ -1,5 +1,6 @@
-package domain.receipt;
+package domain.receipt.integration;
 
+import domain.receipt.Receipt;
 import domain.store.Cashier;
 import domain.product.Category;
 import domain.product.Product;

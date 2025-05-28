@@ -1,5 +1,8 @@
-package domain.product;
+package domain.product.integration;
 
+import domain.product.Category;
+import domain.product.Product;
+import domain.product.StockItem;
 import domain.store.Store;
 import org.junit.jupiter.api.Test;
 import services.InventoryManager;

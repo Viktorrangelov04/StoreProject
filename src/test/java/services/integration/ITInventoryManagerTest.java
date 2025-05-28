@@ -1,9 +1,10 @@
-package services;
+package services.integration;
 
 import domain.product.Category;
 import domain.product.Product;
 import domain.product.StockItem;
 import org.junit.jupiter.api.Test;
+import services.InventoryManager;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

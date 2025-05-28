@@ -1,5 +1,7 @@
-package domain.product;
+package domain.product.integration;
 
+import domain.product.Category;
+import domain.product.Product;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
